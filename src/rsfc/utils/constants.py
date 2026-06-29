@@ -31,7 +31,7 @@ REGEX_CALVER_YYYY_MM_DD_PRERELEASE = r'^\d{4}\.(0[1-9]|1[0-2])\.(0[1-9]|[12][0-9
 
 DOI_SCHEMA_REGEX = r'^10\.\d{4,9}/[-._;()/:A-Z0-9]+$'
 ORCID_SCHEMA_REGEX = r'^https?://orcid\.org/\d{4}-\d{4}-\d{4}-\d{3}[0-9X]$'
-SWHID_SCHEMA_REGEX = r'^swh:1:[a-z]+:[0-9a-f]{40}$'
+SWHID_SCHEMA_REGEX = r'(?:https?://archive\.softwareheritage\.org/)?swh:1:[a-z]+:[0-9a-f]{40}'
 URN_SCHEMA_REGEX = r'^urn:[a-z0-9][a-z0-9-]{1,31}:[\w\-.:\/?#\[\]@!$&\'()*+,;=]+$'
 GITHUB_SCHEMA_REGEX = r'^https?://github\.com/[^/]+/[^/]+/?$'
 ZENODO_BADGE_REGEX = r'^https?://zenodo\.org/badge/latestdoi/\d+$'
@@ -134,6 +134,7 @@ EVIDENCE_TITLE_AND_DESCRIPTION = 'A title was found in [{title_sources}] and a d
 EVIDENCE_NO_DESCRIPTION = 'A title was found in [{title_sources}], but could not find a description in the repository'
 EVIDENCE_NO_TITLE = 'A description was found in [{desc_sources}], but could not find a title in the repository'
 EVIDENCE_NO_TITLE_AND_DESCRIPTION = 'Could not find neither title and/or description in the repository'
+EVIDENCE_NO_SOURCE = "Found {resource} but could not get a source. Data obtained via {technique}"
 SUGGEST_NO_TITLE_DESCRIPTION = "You should add a title and a description to your software's metadata. More information at https://everse.software/RSQKit/software_metadata"
 SUGGEST_NO_DESCRIPTION = "Remember to add a description to your software's metadata. More information at https://everse.software/RSQKit/software_metadata"
 SUGGEST_NO_TITLE = "A title would be of much help to describe your software. More information at https://everse.software/RSQKit/software_metadata"

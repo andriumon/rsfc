@@ -14,41 +14,42 @@ def test_id_presence_and_resolves(somef_data):
         evidence = constants.EVIDENCE_NO_IDENTIFIER_FOUND
         suggest = constants.SUGGEST_NO_IDENTIFIER
     else:
-        item = somef_data["identifier"][0]
-        sources = item.get("source", [])
-        
-        readme_source = any("README" in source for source in sources)
+        for item in somef_data["identifier"]:
+            sources = item.get("source", [])
+            sources_list = sources if isinstance(sources, list) else [sources]
+            
+            readme_source = any("README" in source for source in sources_list)
 
-        if not readme_source:
-            output = "false"
-            evidence = constants.EVIDENCE_NO_IDENTIFIER_FOUND_README
-            suggest = constants.SUGGEST_NO_IDENTIFIER_README
-        else:
-            identifier = item["result"]["value"]
-
-            if (identifier.startswith("http://") or identifier.startswith("https://")):
-                try:
-                    response = requests.get(identifier, allow_redirects=True, timeout=10, stream=True)
-
-                    if response.status_code == 200:
-                        output = "true"
-                        evidence = constants.EVIDENCE_ID_FOUND_AND_RESOLVES.format(id=identifier)
-                        suggest = "N/A"
-
-                    else:
-                        output = "false"
-                        evidence = constants.EVIDENCE_NO_ID_RESOLVE.format(id=identifier)
-                        suggest = constants.SUGGEST_IDENTIFIER_NO_RESOLVE
-
-                except requests.RequestException:
-                    output = "error"
-                    evidence = "Something went wrong when trying to resolve the identifier"
-                    suggest = None
-
-            else:
+            if not readme_source:
                 output = "false"
-                evidence = constants.EVIDENCE_ID_NOT_URL.format(id=identifier)
-                suggest = constants.SUGGEST_IDENTIFIER_NOT_HTTP
+                evidence = constants.EVIDENCE_NO_IDENTIFIER_FOUND_README
+                suggest = constants.SUGGEST_NO_IDENTIFIER_README
+            else:
+                identifier = item["result"]["value"]
+
+                if (identifier.startswith("http://") or identifier.startswith("https://")):
+                    try:
+                        response = requests.get(identifier, allow_redirects=True, timeout=10, stream=True)
+
+                        if response.status_code == 200:
+                            output = "true"
+                            evidence = constants.EVIDENCE_ID_FOUND_AND_RESOLVES.format(id=identifier)
+                            suggest = "N/A"
+
+                        else:
+                            output = "false"
+                            evidence = constants.EVIDENCE_NO_ID_RESOLVE.format(id=identifier)
+                            suggest = constants.SUGGEST_IDENTIFIER_NO_RESOLVE
+
+                    except requests.RequestException:
+                        output = "error"
+                        evidence = "Something went wrong when trying to resolve the identifier"
+                        suggest = None
+
+                else:
+                    output = "false"
+                    evidence = constants.EVIDENCE_ID_NOT_URL.format(id=identifier)
+                    suggest = constants.SUGGEST_IDENTIFIER_NOT_HTTP
 
     check = ch.Check(constants.INDICATORS_DICT['persistent_and_unique_identifier'], 'RSFC-01-1', "There is an identifier and resolves", constants.PROCESS_IDENTIFIER, output, evidence, suggest)
 
@@ -86,7 +87,7 @@ def test_id_common_schema(somef_data):
                         any_identifier_found = True
                         value = cid['value']
                         
-                        if value and not any(pattern.match(str(value)) for pattern in compiled_patterns):
+                        if value and not any(pattern.search(str(value)) for pattern in compiled_patterns):
                             sources = item['source']
                             sources_str = ", ".join(sources) if isinstance(sources, list) else sources
                             failed_identifiers.append(f"\n\t- Identifier '{value}' found in: {sources_str}")
@@ -332,7 +333,6 @@ def test_latest_release_consistency(somef_data):
     
     if 'releases' in somef_data:
         latest_release = rsfc_helpers.get_latest_release(somef_data)
-        print(latest_release)
         
     if 'version' in somef_data:
         version_data = somef_data['version'][0]['result']
@@ -411,45 +411,55 @@ def test_readme_exists(somef_data):
 
 
 def test_title_description(somef_data):
-    title_sources = set()
-    desc_sources = set()
+    title_evidence_part = None
+    desc_evidence_part = None
     
-    if 'full_title' in somef_data and isinstance(somef_data['full_title'], list):
-        for item in somef_data['full_title']:
-            if "source" in item:
-                sources = item["source"]
-                sources_list = sources if isinstance(sources, list) else [sources]
-                for s in sources_list:
-                    if s and str(s).strip():
-                        title_sources.add(str(s).strip())
+    if 'full_title' in somef_data and isinstance(somef_data['full_title'], list) and len(somef_data['full_title']) > 0:
+        item = somef_data['full_title'][0]
+        if "source" in item:
+            sources = item["source"]
+            sources_list = sources if isinstance(sources, list) else [sources]
+            title_txt = ", ".join(sorted([str(s).strip() for s in sources_list if s and str(s).strip()]))
+            title_evidence_part = f"title in {title_txt}"
+        elif "technique" in item:
+            tech = item["technique"]
+            title_evidence_part = f"title (no source found, obtained via {tech})"
+        else:
+            title_evidence_part = "title (no source or technique found)"
 
-    if 'description' in somef_data and isinstance(somef_data['description'], list):
-        for item in somef_data['description']:
-            if "source" in item:
-                sources = item["source"]
-                sources_list = sources if isinstance(sources, list) else [sources]
-                for s in sources_list:
-                    if s and str(s).strip():
-                        desc_sources.add(str(s).strip())
+    if 'description' in somef_data and isinstance(somef_data['description'], list) and len(somef_data['description']) > 0:
+        item = somef_data['description'][0]
+        if "source" in item:
+            sources = item["source"]
+            sources_list = sources if isinstance(sources, list) else [sources]
+            desc_txt = ", ".join(sorted([str(s).strip() for s in sources_list if s and str(s).strip()]))
+            desc_evidence_part = f"description in {desc_txt}"
+        elif "technique" in item:
+            tech = item["technique"]
+            desc_evidence_part = f"description (no source found, obtained via {tech})"
+        else:
+            desc_evidence_part = "description (no source or technique found)"
 
-    title = len(title_sources) > 0
-    desc = len(desc_sources) > 0
-    
-    title_txt = ", ".join(sorted(title_sources))
-    desc_txt = ", ".join(sorted(desc_sources))
-        
-    if title and desc:
+    if title_evidence_part and desc_evidence_part:
         output = "true"
-        evidence = constants.EVIDENCE_TITLE_AND_DESCRIPTION.format(title_sources=title_txt, desc_sources=desc_txt)
         suggest = "N/A"
-    elif title and not desc:
+        if "in " in title_evidence_part and "in " in desc_evidence_part:
+            t_clean = title_evidence_part.replace("title in ", "")
+            d_clean = desc_evidence_part.replace("description in ", "")
+            evidence = constants.EVIDENCE_TITLE_AND_DESCRIPTION.format(title_sources=t_clean, desc_sources=d_clean)
+        else:
+            evidence = f"Found {title_evidence_part} and {desc_evidence_part}."
+
+    elif title_evidence_part and not desc_evidence_part:
         output = "false"
-        evidence = constants.EVIDENCE_NO_DESCRIPTION.format(title_sources=title_txt)
         suggest = constants.SUGGEST_NO_DESCRIPTION
-    elif desc and not title:
+        evidence = f"Found {title_evidence_part}. However, no description was found."
+
+    elif desc_evidence_part and not title_evidence_part:
         output = "false"
-        evidence = constants.EVIDENCE_NO_TITLE.format(desc_sources=desc_txt)
         suggest = constants.SUGGEST_NO_TITLE
+        evidence = f"Found {desc_evidence_part}. However, no title was found."
+
     else:
         output = "false"
         evidence = constants.EVIDENCE_NO_TITLE_AND_DESCRIPTION
@@ -1059,9 +1069,13 @@ def test_dependencies_declared(somef_data):
         suggest = "N/A"
         
         for item in somef_data['requirements']:
-            if 'source' in item:
-                if item['source'] not in evidence:
-                    evidence += f'\n\t- {item["source"]}'
+            sources = item.get("source", [])
+            sources_list = sources if isinstance(sources, list) else [sources]
+            
+            sources_str = ", ".join(sources_list)
+            
+            if sources_str not in evidence:
+                evidence += f'\n\t- {sources_str}'
 
     check = ch.Check(constants.INDICATORS_DICT['requirements_specified'], 'RSFC-13-1', "Dependencies are declared", constants.PROCESS_REQUIREMENTS, output, evidence, suggest)
     
@@ -1224,8 +1238,8 @@ def test_github_action_tests(somef_data):
     else:
         for item in somef_data['continuous_integration']:
             if item['result']['value'] and ('.github/workflows' in item['result']['value'] or '.gitlab-ci.yml' in item['result']['value']):
-                if 'test' in item['result']['value'] or 'tests' in item['result']['value']:
-                    sources += f'\t\n- {item["result"]["value"]}'
+                if any(keyword in item['result']['value'] for keyword in ["test", "validate", "check"]):
+                    sources += f'\n\t- {item["result"]["value"]}'
                     
     if sources:
         output = "true"
@@ -1355,8 +1369,9 @@ def test_license_info_in_metadata_files(somef_data):
     
     if 'license' in somef_data:
         for item in somef_data['license']:
-            sources = item.get("source", [])
-            for s in sources:
+            sources = item["source"]
+            sources_list = sources if isinstance(sources, list) else [sources]
+            for s in sources_list:
                 if 'pyproject.toml' in s or 'setup.py' in s or 'node.json' in s or 'pom.xml' in s or 'package.json' in s:
                     license_info['package'] = item["result"]["value"]
                 if "codemeta" in s:
