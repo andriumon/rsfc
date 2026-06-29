@@ -20,7 +20,7 @@
     rdfs:label "RSFC-17-2"^^xsd:string ;
     vivo:abbreviation "RSFC-17-2"^^xsd:string ;
     dcterms:license <http://creativecommons.org/licenses/by/4.0/> ;
-    dcterms:description """This test checks if the repository has a commit history. This is done by looking for commits in the software’s repository."""@en ;
+    dcterms:description """This test checks if the repository has a commit history within a 90 day timeframe. This is done by looking for commits in the software’s repository."""@en ;
     dcterms:publisher <https://oeg.fi.upm.es> ,
                       <https://ror.org/03n6nwv02> ;
     dcat:version "0.0.1"^^xsd:string ;

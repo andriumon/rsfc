@@ -12,27 +12,28 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 
 
-<https://w3id.org/rsfc/test/RSFC-17-1> a ftr:Test, dcat:DataService ;
+<https://w3id.org/rsfc/test/RSFC-22-1> a ftr:Test, dcat:DataService ;
     dcat:contactPoint <https://orcid.org/0000-0003-0454-7145> ;
     dcterms:creator <https://orcid.org/0000-0003-0454-7145> ,
                     <https://github.com/andriumon> ;
-    dcterms:title "Repository active"@en ;
-    rdfs:label "RSFC-17-1"^^xsd:string ;
-    vivo:abbreviation "RSFC-17-1"^^xsd:string ;
+    dcterms:title "Software is containerized"@en ;
+    rdfs:label "RSFC-22-1"^^xsd:string ;
+    vivo:abbreviation "RSFC-22-1"^^xsd:string ;
     dcterms:license <http://creativecommons.org/licenses/by/4.0/> ;
-    dcterms:description """This test checks whether the repository is active. It first looks for a repostatus badge with the value “Active” in the README file. If the badge is not present, the test verifies whether there have been any commits to the repository in the past, indicating ongoing development."""@en ;
+    dcterms:description """This test checks if there is a container file in the repository. This is done by checking if there is any container build type file (i.e Dockerfile, Podman, Apptainer)  in the repository’s root."""@en ;
     dcterms:publisher <https://oeg.fi.upm.es> ,
                       <https://ror.org/03n6nwv02> ;
-	dqv:inDimension  <https://doi.org/10.25504/FAIRsharing.9ca8a1>;
     dcat:version "0.0.1"^^xsd:string ;
-    dcterms:identifier "https://w3id.org/rsfc/test/RSFC-17-1" ;
-    dcat:keyword "Active"@en , "Repository"@en , 
+    dcterms:identifier "https://w3id.org/rsfc/test/RSFC-22-1" ;
+	dqv:inDimension  <https://doi.org/10.25504/FAIRsharing.60a40f>;
+    dcat:keyword "Containerized"@en , "Repository"@en , 
                  "Test"@en ;
     dcat:endpointDescription <https://w3id.org/rsfc/api> ;
-    dcat:endpointURL <https://api.rsfc.linkeddata.es/assess/test/RSFC-17-1> ;
+    dcat:endpointURL <https://api.rsfc.linkeddata.es/assess/test/RSFC-22-1> ;
     dpv:isApplicableFor <https://schema.org/SoftwareSourceCode> ;
     ftr:supportedBy <https://w3id.org/rsfc/> ;
-    <http://semanticscience.org/resource/SIO_000233> <https://w3id.org/everse/i/indicators/version_control_use> ; 
+    ftr:supportedBy <https://w3id.org/rsfc/> ;
+    <http://semanticscience.org/resource/SIO_000233> <https://w3id.org/everse/i/indicators/software_is_containerized> ; 
     doap:repository <https://w3id.org/rsfc/repository> .
 <https://orcid.org/0000-0003-0454-7145> a vcard:Individual ;
     vcard:fn "Daniel Garijo"^^xsd:string ;
@@ -40,10 +41,10 @@
 <https://github.com/andriumon> a vcard:Individual ;
     vcard:fn "Andres Montero"^^xsd:string ;
     vcard:hasEmail <mailto:andres.montero.martin@upm.es> .
-<https://doi.org/10.25504/FAIRsharing.9ca8a1> 
-	rdfs:label "R1.2"^^xsd:string ;
-	vivo:abbreviation "R1.2"^^xsd:string ;
-	dcterms:description "Software is associated with detailed provenance."@en .
+<https://doi.org/10.25504/FAIRsharing.60a40f> 
+	rdfs:label "R3"^^xsd:string ;
+	vivo:abbreviation "R3"^^xsd:string ;
+	dcterms:description "Software meets domain-relevant community standards"@en .
 <https://oeg.fi.upm.es> a vcard:Organization ;
     rdfs:label "Ontology Engineering Group" ;
     vcard:url <https://oeg.fi.upm.es/> .
@@ -54,5 +55,6 @@
 <https://w3id.org/rsfc/repository>
     foaf:homePage <https://github.com/oeg-upm/rsfc> ;
     dcterms:description "Main repository for Research Software Quality Checks (RSFC) code and documentation"@en .
-<https://w3id.org/everse/i/indicators/version_control_use> a dqv:Metric ;
-    owl:sameAs <https://doi.org/10.25504/FAIRsharing.d2b2c5> .
+<https://w3id.org/everse/i/indicators/software_is_containerized> a dqv:Metric ;
+    owl:sameAs <https://fairsharing.org/8338> .
+ 

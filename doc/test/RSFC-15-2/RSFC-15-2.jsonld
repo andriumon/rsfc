@@ -1,5 +1,21 @@
 [
     {
+        "@id": "https://oeg.fi.upm.es",
+        "@type": [
+            "http://www.w3.org/2006/vcard/ns#Organization"
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#label": [
+            {
+                "@value": "Ontology Engineering Group"
+            }
+        ],
+        "http://www.w3.org/2006/vcard/ns#url": [
+            {
+                "@id": "https://oeg.fi.upm.es/"
+            }
+        ]
+    },
+    {
         "@id": "https://w3id.org/rsfc/test/RSFC-15-2",
         "@type": [
             "https://w3id.org/ftr#Test",
@@ -117,37 +133,13 @@
         ]
     },
     {
-        "@id": "https://doi.org/10.25504/FAIRsharing.95c69f",
-        "http://purl.org/dc/terms/description": [
-            {
-                "@language": "en",
-                "@value": "Software is given a clear and accessible licence."
-            }
+        "@id": "https://w3id.org/everse/i/indicators/software_has_license",
+        "@type": [
+            "http://www.w3.org/ns/dqv#Metric"
         ],
-        "http://vivoweb.org/ontology/core#abbreviation": [
+        "http://www.w3.org/2002/07/owl#sameAs": [
             {
-                "@type": "http://www.w3.org/2001/XMLSchema#string",
-                "@value": "R1.1"
-            }
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#label": [
-            {
-                "@type": "http://www.w3.org/2001/XMLSchema#string",
-                "@value": "R1.1"
-            }
-        ]
-    },
-    {
-        "@id": "https://w3id.org/rsfc/repository",
-        "http://purl.org/dc/terms/description": [
-            {
-                "@language": "en",
-                "@value": "Main repository for Research Software Quality Checks (RSFC) code and documentation"
-            }
-        ],
-        "http://xmlns.com/foaf/0.1/homePage": [
-            {
-                "@id": "https://github.com/oeg-upm/rsfc"
+                "@id": "https://fairsharing.org/6451"
             }
         ]
     },
@@ -169,29 +161,19 @@
         ]
     },
     {
-        "@id": "https://oeg.fi.upm.es",
+        "@id": "https://orcid.org/0000-0003-0454-7145",
         "@type": [
-            "http://www.w3.org/2006/vcard/ns#Organization"
+            "http://www.w3.org/2006/vcard/ns#Individual"
         ],
-        "http://www.w3.org/2000/01/rdf-schema#label": [
+        "http://www.w3.org/2006/vcard/ns#fn": [
             {
-                "@value": "Ontology Engineering Group"
+                "@type": "http://www.w3.org/2001/XMLSchema#string",
+                "@value": "Daniel Garijo"
             }
         ],
-        "http://www.w3.org/2006/vcard/ns#url": [
+        "http://www.w3.org/2006/vcard/ns#hasEmail": [
             {
-                "@id": "https://oeg.fi.upm.es/"
-            }
-        ]
-    },
-    {
-        "@id": "https://w3id.org/everse/i/indicators/software_has_license",
-        "@type": [
-            "http://www.w3.org/ns/dqv#Metric"
-        ],
-        "http://www.w3.org/2002/07/owl#sameAs": [
-            {
-                "@id": "https://fairsharing.org/6451"
+                "@id": "mailto:dgarijo@upm.es"
             }
         ]
     },
@@ -217,19 +199,37 @@
         ]
     },
     {
-        "@id": "https://orcid.org/0000-0003-0454-7145",
-        "@type": [
-            "http://www.w3.org/2006/vcard/ns#Individual"
-        ],
-        "http://www.w3.org/2006/vcard/ns#fn": [
+        "@id": "https://w3id.org/rsfc/repository",
+        "http://purl.org/dc/terms/description": [
             {
-                "@type": "http://www.w3.org/2001/XMLSchema#string",
-                "@value": "Daniel Garijo"
+                "@language": "en",
+                "@value": "Main repository for Research Software Quality Checks (RSFC) code and documentation"
             }
         ],
-        "http://www.w3.org/2006/vcard/ns#hasEmail": [
+        "http://xmlns.com/foaf/0.1/homePage": [
             {
-                "@id": "mailto:dgarijo@upm.es"
+                "@id": "https://github.com/oeg-upm/rsfc"
+            }
+        ]
+    },
+    {
+        "@id": "https://doi.org/10.25504/FAIRsharing.95c69f",
+        "http://purl.org/dc/terms/description": [
+            {
+                "@language": "en",
+                "@value": "Software is given a clear and accessible licence."
+            }
+        ],
+        "http://vivoweb.org/ontology/core#abbreviation": [
+            {
+                "@type": "http://www.w3.org/2001/XMLSchema#string",
+                "@value": "R1.1"
+            }
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#label": [
+            {
+                "@type": "http://www.w3.org/2001/XMLSchema#string",
+                "@value": "R1.1"
             }
         ]
     }
