@@ -1,73 +1,22 @@
 [
     {
-        "@id": "https://w3id.org/everse/i/indicators/software_documentation",
+        "@id": "https://oeg.fi.upm.es",
         "@type": [
-            "http://www.w3.org/ns/dqv#Metric"
-        ],
-        "http://www.w3.org/2002/07/owl#sameAs": [
-            {
-                "@id": "https://doi.org/10.25504/FAIRsharing.452bcd"
-            }
-        ]
-    },
-    {
-        "@id": "https://doi.org/10.25504/FAIRsharing.60a40f",
-        "http://purl.org/dc/terms/description": [
-            {
-                "@language": "en",
-                "@value": "Software meets domain-relevant community standards."
-            }
-        ],
-        "http://vivoweb.org/ontology/core#abbreviation": [
-            {
-                "@type": "http://www.w3.org/2001/XMLSchema#string",
-                "@value": "R3"
-            }
+            "http://www.w3.org/2006/vcard/ns#Organization"
         ],
         "http://www.w3.org/2000/01/rdf-schema#label": [
             {
-                "@type": "http://www.w3.org/2001/XMLSchema#string",
-                "@value": "R3"
+                "@value": "Ontology Engineering Group"
+            }
+        ],
+        "http://www.w3.org/2006/vcard/ns#url": [
+            {
+                "@id": "https://oeg.fi.upm.es/"
             }
         ]
     },
     {
-        "@id": "https://w3id.org/rsfc/repository",
-        "http://purl.org/dc/terms/description": [
-            {
-                "@language": "en",
-                "@value": "Main repository for Research Software Quality Checks (RSFC) code and documentation"
-            }
-        ],
-        "http://xmlns.com/foaf/0.1/homePage": [
-            {
-                "@id": "https://github.com/oeg-upm/rsfc"
-            }
-        ]
-    },
-    {
-        "@id": "https://doi.org/10.25504/FAIRsharing.a712f1",
-        "http://purl.org/dc/terms/description": [
-            {
-                "@language": "en",
-                "@value": "Software is described with rich metadata."
-            }
-        ],
-        "http://vivoweb.org/ontology/core#abbreviation": [
-            {
-                "@type": "http://www.w3.org/2001/XMLSchema#string",
-                "@value": "F2"
-            }
-        ],
-        "http://www.w3.org/2000/01/rdf-schema#label": [
-            {
-                "@type": "http://www.w3.org/2001/XMLSchema#string",
-                "@value": "F2"
-            }
-        ]
-    },
-    {
-        "@id": "https://w3id.org/rsfc/test/RSFC-06-4",
+        "@id": "https://w3id.org/rsfc/test/RSFC-22-1",
         "@type": [
             "https://w3id.org/ftr#Test",
             "http://www.w3.org/ns/dcat#DataService"
@@ -83,12 +32,12 @@
         "http://purl.org/dc/terms/description": [
             {
                 "@language": "en",
-                "@value": "This test checks if authors have their roles stated in a codemeta.json. This is achieved by looking for authors in the codemeta.json file and checking if all of them have a role assigned. This process follows the codemeta v2 and v3 standards."
+                "@value": "This test checks if there is a container file in the repository. This is done by checking if there is any container build type file (i.e Dockerfile, Podman, Apptainer)  in the repository’s root."
             }
         ],
         "http://purl.org/dc/terms/identifier": [
             {
-                "@value": "https://w3id.org/rsfc/test/RSFC-06-4"
+                "@value": "https://w3id.org/rsfc/test/RSFC-22-1"
             }
         ],
         "http://purl.org/dc/terms/license": [
@@ -107,12 +56,12 @@
         "http://purl.org/dc/terms/title": [
             {
                 "@language": "en",
-                "@value": "Authors have roles"
+                "@value": "Software is containerized"
             }
         ],
         "http://semanticscience.org/resource/SIO_000233": [
             {
-                "@id": "https://w3id.org/everse/i/indicators/software_documentation"
+                "@id": "https://w3id.org/everse/i/indicators/software_is_containerized"
             }
         ],
         "http://usefulinc.com/ns/doap#repository": [
@@ -123,13 +72,13 @@
         "http://vivoweb.org/ontology/core#abbreviation": [
             {
                 "@type": "http://www.w3.org/2001/XMLSchema#string",
-                "@value": "RSFC-06-4"
+                "@value": "RSFC-22-1"
             }
         ],
         "http://www.w3.org/2000/01/rdf-schema#label": [
             {
                 "@type": "http://www.w3.org/2001/XMLSchema#string",
-                "@value": "RSFC-06-4"
+                "@value": "RSFC-22-1"
             }
         ],
         "http://www.w3.org/ns/dcat#contactPoint": [
@@ -144,17 +93,17 @@
         ],
         "http://www.w3.org/ns/dcat#endpointURL": [
             {
-                "@id": "https://api.rsfc.linkeddata.es/assess/test/RSFC-06-4"
+                "@id": "https://api.rsfc.linkeddata.es/assess/test/RSFC-22-1"
             }
         ],
         "http://www.w3.org/ns/dcat#keyword": [
             {
                 "@language": "en",
-                "@value": "Author"
+                "@value": "Containerized"
             },
             {
                 "@language": "en",
-                "@value": "Rol"
+                "@value": "Repository"
             },
             {
                 "@language": "en",
@@ -168,9 +117,6 @@
             }
         ],
         "http://www.w3.org/ns/dqv#inDimension": [
-            {
-                "@id": "https://doi.org/10.25504/FAIRsharing.a712f1"
-            },
             {
                 "@id": "https://doi.org/10.25504/FAIRsharing.60a40f"
             }
@@ -204,18 +150,40 @@
         ]
     },
     {
-        "@id": "https://oeg.fi.upm.es",
-        "@type": [
-            "http://www.w3.org/2006/vcard/ns#Organization"
+        "@id": "https://doi.org/10.25504/FAIRsharing.60a40f",
+        "http://purl.org/dc/terms/description": [
+            {
+                "@language": "en",
+                "@value": "Software meets domain-relevant community standards"
+            }
+        ],
+        "http://vivoweb.org/ontology/core#abbreviation": [
+            {
+                "@type": "http://www.w3.org/2001/XMLSchema#string",
+                "@value": "R3"
+            }
         ],
         "http://www.w3.org/2000/01/rdf-schema#label": [
             {
-                "@value": "Ontology Engineering Group"
+                "@type": "http://www.w3.org/2001/XMLSchema#string",
+                "@value": "R3"
+            }
+        ]
+    },
+    {
+        "@id": "https://orcid.org/0000-0003-0454-7145",
+        "@type": [
+            "http://www.w3.org/2006/vcard/ns#Individual"
+        ],
+        "http://www.w3.org/2006/vcard/ns#fn": [
+            {
+                "@type": "http://www.w3.org/2001/XMLSchema#string",
+                "@value": "Daniel Garijo"
             }
         ],
-        "http://www.w3.org/2006/vcard/ns#url": [
+        "http://www.w3.org/2006/vcard/ns#hasEmail": [
             {
-                "@id": "https://oeg.fi.upm.es/"
+                "@id": "mailto:dgarijo@upm.es"
             }
         ]
     },
@@ -241,19 +209,27 @@
         ]
     },
     {
-        "@id": "https://orcid.org/0000-0003-0454-7145",
-        "@type": [
-            "http://www.w3.org/2006/vcard/ns#Individual"
-        ],
-        "http://www.w3.org/2006/vcard/ns#fn": [
+        "@id": "https://w3id.org/rsfc/repository",
+        "http://purl.org/dc/terms/description": [
             {
-                "@type": "http://www.w3.org/2001/XMLSchema#string",
-                "@value": "Daniel Garijo"
+                "@language": "en",
+                "@value": "Main repository for Research Software Quality Checks (RSFC) code and documentation"
             }
         ],
-        "http://www.w3.org/2006/vcard/ns#hasEmail": [
+        "http://xmlns.com/foaf/0.1/homePage": [
             {
-                "@id": "mailto:dgarijo@upm.es"
+                "@id": "https://github.com/oeg-upm/rsfc"
+            }
+        ]
+    },
+    {
+        "@id": "https://w3id.org/everse/i/indicators/software_is_containerized",
+        "@type": [
+            "http://www.w3.org/ns/dqv#Metric"
+        ],
+        "http://www.w3.org/2002/07/owl#sameAs": [
+            {
+                "@id": "https://fairsharing.org/8338"
             }
         ]
     }
