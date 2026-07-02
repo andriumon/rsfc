@@ -1369,7 +1369,7 @@ def test_license_info_in_metadata_files(somef_data):
     
     if 'license' in somef_data:
         for item in somef_data['license']:
-            sources = item["source"]
+            sources = item.get("source", [])
             sources_list = sources if isinstance(sources, list) else [sources]
             for s in sources_list:
                 if 'pyproject.toml' in s or 'setup.py' in s or 'node.json' in s or 'pom.xml' in s or 'package.json' in s:
@@ -1583,7 +1583,15 @@ def test_has_contribution_guidelines(somef_data):
         suggest = "N/A"
         
         for item in somef_data["contributing_guidelines"]:
-            evidence += f'\n\t- {item["source"]}'
+            sources = item.get("source", "")
+            
+            if isinstance(sources, list):
+                sources = ", ".join(str(s) for s in sources)
+                
+            if sources:
+                evidence += f'\n\t- {sources}'
+            else:
+                evidence += '\n\t- (source not found)'
         
     check = ch.Check(constants.INDICATORS_DICT['has_contribution_guidelines'], 'RSFC-21-1', "Repository has contribution guidelines", constants.PROCESS_CONTRIBUTION_GUIDELINES, output, evidence, suggest)
     
