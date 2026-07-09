@@ -1,12 +1,12 @@
-# Quality Assessment for rsfc v0.1.6
+# Quality Assessment for rsfc v0.1.7
 
-An automated assessment of the rsfc tool based on the EVERSE software quality indicators, run on 2026-07-02.
+An automated assessment of the rsfc tool based on the EVERSE software quality indicators, run on 2026-07-09.
 
 ## General Information
 
 - **Software:** rsfc
 - **Repository:** https://github.com/oeg-upm/rsfc
-- **Assessment date:** 2026-07-02T09:15:49Z
+- **Assessment date:** 2026-07-09T10:59:29Z
 - **Total checks:** 41
 
 ## Summary
@@ -177,6 +177,7 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Result:** true
 - **Process:** Searches for release tags in the repository
 - **Evidence:** These releases were found:
+	- https://github.com/oeg-upm/rsfc/releases/tag/v0.1.7
 	- https://github.com/oeg-upm/rsfc/releases/tag/v0.1.6
 	- https://github.com/oeg-upm/rsfc/releases/tag/v0.1.5
 	- https://github.com/oeg-upm/rsfc/releases/tag/v0.1.4
@@ -570,9 +571,9 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Process:** Searches for a file named 'LICENSE' or 'LICENSE.md' in the root of the repository.
 - **Evidence:** A license was found in:
 	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/codemeta.json
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/LICENSE
 	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/CITATION.cff
+	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/LICENSE
+	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/codemeta.json
 - **Suggestions:** N/A
 
 <a id="software_has_license-https---w3id-org-rsfc-test-rsfc-15-2"></a>
@@ -657,7 +658,7 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Result:** true
 - **Process:** Checks if the software repository has a commits history
 - **Evidence:** A commit history was found in:
-	- https://api.github.com/repos/oeg-upm/rsfc/commits?sha=main&since=2026-04-03T09:15:34.373633+00:00&per_page=100
+	- https://api.github.com/repos/oeg-upm/rsfc/commits?sha=main&since=2026-04-10T10:59:15.010993+00:00&per_page=100
 - **Suggestions:** N/A
 
 <a id="version_control_use-https---w3id-org-rsfc-test-rsfc-17-3"></a>
