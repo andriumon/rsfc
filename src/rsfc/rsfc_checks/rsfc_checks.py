@@ -3,7 +3,7 @@ from rsfc.model import check as ch
 import regex as re
 import requests
 from rsfc.utils import rsfc_helpers
-
+from rsfc.harvesters.github_harvester import detect_repo_type
 
 ################################################### FRSM_01 ###################################################
 
@@ -973,29 +973,36 @@ def test_metadata_record_in_zenodo_or_software_heritage(somef_data):
 ################################################### FRSM_09 ###################################################
 
 def test_is_github_repository(repo_url):
+    # TODO: change the name of the function?
 
-    if 'github.com' in repo_url or 'gitlab.com' in repo_url:
-        response = requests.head(repo_url, allow_redirects=True, timeout=5)
-        if response.status_code == 200:
-            output = "true"
-            evidence = constants.EVIDENCE_IS_IN_GITHUB_OR_GITLAB
-            suggest = "N/A"
-        elif response.status_code == 404:
-            output = "false"
-            evidence = constants.EVIDENCE_NO_RESOLVE_GITHUB_OR_GITLAB_URL
-            suggest = "N/A"
+        try:
+            detect_repo_type(repo_url)      
+            supported = True
+        except ValueError:
+            supported = False
+
+        if supported:
+            response = requests.head(repo_url, allow_redirects=True, timeout=5)
+            if response.status_code == 200:
+                output = "true"
+                evidence = constants.EVIDENCE_IS_IN_GITHUB_OR_GITLAB
+                suggest = "N/A"
+            elif response.status_code == 404:
+                output = "false"
+                evidence = constants.EVIDENCE_NO_RESOLVE_GITHUB_OR_GITLAB_URL
+                suggest = "N/A"
+            else:
+                output = "error"
+                evidence = 'Connection error'
+                suggest = "N/A"
         else:
-            output = "error"
-            evidence = 'Connection error'
+            output = "false"
+            evidence = constants.EVIDENCE_NO_GITHUB_OR_GITLAB_URL
             suggest = "N/A"
-    else:
-        output = "false"
-        evidence = constants.EVIDENCE_NO_GITHUB_OR_GITLAB_URL
-        suggest = "N/A"
+            
+        check = ch.Check(constants.INDICATORS_DICT['version_control_use'], 'RSFC-09-1', "Repository is from Github/Gitlab", constants.PROCESS_IS_GITHUB_OR_GITLAB_REPOSITORY, output, evidence, suggest)
     
-    check = ch.Check(constants.INDICATORS_DICT['version_control_use'], 'RSFC-09-1', "Repository is from Github/Gitlab", constants.PROCESS_IS_GITHUB_OR_GITLAB_REPOSITORY, output, evidence, suggest)
-    
-    return check.convert()
+        return check.convert()
 
 ################################################### FRSM_12 ###################################################
 

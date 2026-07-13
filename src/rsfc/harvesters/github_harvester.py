@@ -5,6 +5,28 @@ import yaml
 from rsfc.utils import constants
 from rsfc.utils.exceptions import GithubRateLimitExceeded
 
+def _is_gitlab_instance(host, timeout=10):
+    # Check if this is a gitlab instance
+    try:
+        resp = requests.get(f"https://{host}/api/v4/version", timeout=timeout)
+        return resp.status_code in (200, 401)   # 401 = GitLab API but unauthorized
+    except requests.RequestException:
+        return False    
+
+def detect_repo_type(repo_url):
+    """Return the forge type for a repository URL.
+    Raises ValueError when the forge cannot be determined.
+    """
+    host = urllib.parse.urlparse(repo_url).netloc.lower()
+    if "github.com" in host:
+        return constants.REPO_TYPES[0]                      # "GITHUB"
+    if "gitlab" in host or _is_gitlab_instance(host):
+        return constants.REPO_TYPES[1]                      # "GITLAB"
+    raise ValueError(
+        f"Unsupported or undetectable forge for host '{host}' "
+        f"(only GitHub and GitLab, including self-hosted, are supported)."
+    )
+
 class GithubHarvester:
     
     def __init__(self, repo_url, branch, tag, token):
@@ -45,7 +67,7 @@ class GithubHarvester:
             url = f"https://api.github.com/repos/{owner}/{repo}"
         elif self.repo_type == constants.REPO_TYPES[1]:
             project_path = urllib.parse.quote(f"{owner}/{repo}", safe="")
-            url = f"https://gitlab.com/api/v4/projects/{project_path}"
+            url = f"https://{parsed_url.netloc}/api/v4/projects/{project_path}"
         else:
             raise ValueError("URL not within supported types (Github and Gitlab)")
 
@@ -53,13 +75,7 @@ class GithubHarvester:
     
     
     def get_repo_type(self):
-        if "github" in self.repo_url:
-            repo_type = constants.REPO_TYPES[0]
-        elif "gitlab" in self.repo_url:
-            repo_type = constants.REPO_TYPES[1]
-            
-        return repo_type
-    
+        return detect_repo_type(self.repo_url)
     
     def get_repo_default_branch(self):
         res = self.safe_request("GET", self.api_url)
@@ -80,7 +96,7 @@ class GithubHarvester:
 
             elif self.repo_type == "GITLAB":
                 project_path_encoded = self.api_url.split("/projects/")[-1]
-                req_url = f"https://gitlab.com/api/v4/projects/{project_path_encoded}/repository/files/codemeta.json/raw"
+                req_url = f"{self.api_url}/repository/files/codemeta.json/raw"
                 params = {'ref': self.repo_branch}
                 response = self.safe_request("GET", req_url, params=params)
                 return response.json()
@@ -104,7 +120,7 @@ class GithubHarvester:
 
             elif self.repo_type == "GITLAB":
                 project_path_encoded = self.api_url.split("/projects/")[-1]
-                req_url = f"https://gitlab.com/api/v4/projects/{project_path_encoded}/repository/files/CITATION.cff/raw"
+                req_url = f"{self.api_url}/repository/files/CITATION.cff/raw"
                 params = {'ref': self.repo_branch}
                 response = self.safe_request("GET", req_url, params=params)
                 return yaml.safe_load(response.text)
