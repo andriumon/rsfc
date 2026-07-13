@@ -59,7 +59,8 @@ class SomefHarvester:
         somef_kwargs = {
             "threshold": threshold,
             "ignore_classifiers": True,
-            "repo_url": repo_url,
+            #"repo_url": repo_url,
+            "local_repo": "./",
             "readme_only": False,
             "output": output_json,
             "pretty": True
@@ -70,6 +71,9 @@ class SomefHarvester:
 
         elif tag is not None:
             somef_kwargs["tag"] = tag
+            
+        '''elif local is not None:
+            somef_kwargs["local"] = local'''
 
         with (contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO())):
 

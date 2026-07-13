@@ -7,11 +7,11 @@ from rsfc.harvesters import github_harvester as gt
 from rsfc.utils import rsfc_helpers
 
 
-def start_assessment(repo_url, branch, tag, ftr, test_id, token):
+def start_assessment(repo, branch, tag, ftr, test_id, token):
     
-    gh = gt.GithubHarvester(repo_url, branch, tag, token)
-    sw = soft.AssessedSoftware(repo_url, gh)
-    somef = som.SomefHarvester(repo_url, branch, tag, token)
+    gh = gt.GithubHarvester(repo, branch, tag, token)
+    sw = soft.AssessedSoftware(repo, gh)
+    somef = som.SomefHarvester(repo, branch, tag, token)
     
     print("Assessing repository...")
 

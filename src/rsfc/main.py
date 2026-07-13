@@ -1,45 +1,52 @@
-import argparse
+import os
+import json
+import sys
+import click
 
-def main():
-    parser = argparse.ArgumentParser(description="RSFC - EVERSE Research Software Fairness Checks")
-    parser.add_argument("--repo", required=True, help="URL of the Github/Gitlab repository to be analyzed")
-    parser.add_argument("-b", required=False, help="Name of the repo branch to analyze. By default main/master")
-    parser.add_argument("-v", required=False, help="Tag of the release to analyze. By default latest release. Cannot be used together with the branch parameter")
-    parser.add_argument("--ftr", action="store_true", help="Flag to indicate if JSON-LD in FTR format is desired")
-    parser.add_argument("--id", required=False, help="Identifier of a specific test. Only that test will be ran")
-    parser.add_argument("-t", required=False, help="Authorization Github token")
-
-    args = parser.parse_args()
+@click.command(help="RSFC - EVERSE Research Software Fairness Checks")
+@click.option('--repo', help="URL of the Github/Gitlab repository to be analyzed")
+@click.option('--local-path', type=click.Path(exists=True, file_okay=False), help="Local path of the repository to be analyzed")
+@click.option('-b', help="Name of the repo branch to analyze. By default main/master")
+@click.option('-v', help="Tag of the release to analyze. By default latest release.")
+@click.option('--ftr', is_flag=True, help="Flag to indicate if JSON-LD in FTR format is desired")
+@click.option('--id', help="Identifier of a specific test. Only that test will be ran")
+@click.option('-t', help="Authorization Github token")
+def main(repo, local_path, b, v, ftr, id, t):
     
-    print("Making preparations...")
+    if repo and local_path:
+        raise click.UsageError("Error: You can't use '--repo' and '--local-path' at the same time")
+    if not repo and not local_path:
+        raise click.UsageError("Error: Either '--repo' or '--local_path' must be passed")
+
+    if b and v:
+        raise click.UsageError("Error: You can't use '-b' and '-v' at the same time.")
+
+    click.echo("Making preparations...")
     
     from rsfc.rsfc_core import start_assessment
     from rsfc.utils.rsfc_helpers import resolve_w3id, remove_git_from_url
     from rsfc.utils.exceptions import GithubRateLimitExceeded
-    import os
-    import json
-    import sys
     
-    
-    print("Checking if url is w3id")
-    
-    repo_url = resolve_w3id(args.repo)
-    repo_url = remove_git_from_url(repo_url)
+    if repo:
+        click.echo("Checking if url is w3id")
+        target_path = resolve_w3id(repo)
+        target_path = remove_git_from_url(target_path)
+    else:
+        target_path = local_path
     
     try:
-        rsfc_asmt, table = start_assessment(repo_url, args.b, args.v, args.ftr, args.id, args.t)
+        rsfc_asmt, table = start_assessment(target_path, b, v, ftr, id, t)
         
     except GithubRateLimitExceeded as e:
-        print(f"\nERROR: {e}")
-        print("If you want to keep using RSFC, please use a Github token. More information available in this project's README file.")
+        click.echo(click.style(f"\nERROR: {e}", fg="red"), err=True)
+        click.echo("If you want to keep using RSFC, please use a Github token. More information available in this project's README file.")
         sys.exit(1)
     
     output_dir = './rsfc_output/'
     output_file = "rsfc_assessment.json"
     output_path = os.path.join(output_dir, output_file)
     
-    print("Saving assessment locally...")
-    
+    click.echo("Saving assessment locally...")
     os.makedirs(output_dir, exist_ok=True)
 
     if os.path.exists(output_path):
@@ -48,8 +55,8 @@ def main():
     with open(output_path, 'w') as f:
         json.dump(rsfc_asmt, f, indent=4)
         
-    print("Creating terminal output...")
-    print(table)
+    click.echo("Creating terminal output...")
+    click.echo(table)
 
 if __name__ == "__main__":
     main()

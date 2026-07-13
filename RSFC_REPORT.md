@@ -1,19 +1,19 @@
 # Quality Assessment for rsfc v0.1.7
 
-An automated assessment of the rsfc tool based on the EVERSE software quality indicators, run on 2026-07-09.
+An automated assessment of the rsfc tool based on the EVERSE software quality indicators, run on 2026-07-13.
 
 ## General Information
 
 - **Software:** rsfc
 - **Repository:** https://github.com/oeg-upm/rsfc
-- **Assessment date:** 2026-07-09T10:59:29Z
+- **Assessment date:** 2026-07-13T09:12:55Z
 - **Total checks:** 41
 
 ## Summary
 
-- **Passed (`true`)**: 34
-- **Failed (`false`)**: 7
-- **Errors (`error`)**: 0
+- **Passed (`true`)**: 27
+- **Failed (`false`)**: 13
+- **Errors (`error`)**: 1
 
 ## Results Table
 
@@ -22,11 +22,11 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 | [RSFC-01-1](https://w3id.org/rsfc/test/RSFC-01-1) | There is an identifier and it resolves | true |
 | [RSFC-01-2](https://w3id.org/rsfc/test/RSFC-01-2) | There is an identifier in the metadata files | true |
 | [RSFC-01-3](https://w3id.org/rsfc/test/RSFC-01-3) | There is an identifier and it follows a common schema | true |
-| [RSFC-03-1](https://w3id.org/rsfc/test/RSFC-03-1) | The software has releases | true |
-| [RSFC-03-2](https://w3id.org/rsfc/test/RSFC-03-2) | Releases have version and identifier | true |
-| [RSFC-03-3](https://w3id.org/rsfc/test/RSFC-03-3) | Release versions follow SemVer or CalVer | true |
-| [RSFC-03-4](https://w3id.org/rsfc/test/RSFC-03-4) | Release identifiers follow the same scheme | true |
-| [RSFC-03-5](https://w3id.org/rsfc/test/RSFC-03-5) | Last release version corresponds to version in package file | true |
+| [RSFC-03-1](https://w3id.org/rsfc/test/RSFC-03-1) | The software has releases | false |
+| [RSFC-03-2](https://w3id.org/rsfc/test/RSFC-03-2) | Releases have version and identifier | false |
+| [RSFC-03-3](https://w3id.org/rsfc/test/RSFC-03-3) | Release versions follow SemVer or CalVer | false |
+| [RSFC-03-4](https://w3id.org/rsfc/test/RSFC-03-4) | Release identifiers follow the same scheme | false |
+| [RSFC-03-5](https://w3id.org/rsfc/test/RSFC-03-5) | Last release version corresponds to version in package file | error |
 | [RSFC-03-6](https://w3id.org/rsfc/test/RSFC-03-6) | There is a version number stated in metadata files | true |
 | [RSFC-04-1](https://w3id.org/rsfc/test/RSFC-04-1) | Metadata files exist | true |
 | [RSFC-04-2](https://w3id.org/rsfc/test/RSFC-04-2) | There is a README file | true |
@@ -40,7 +40,7 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 | [RSFC-06-2](https://w3id.org/rsfc/test/RSFC-06-2) | Contributors are declared | false |
 | [RSFC-06-3](https://w3id.org/rsfc/test/RSFC-06-3) | Authors have an ORCID assigned | false |
 | [RSFC-07-1](https://w3id.org/rsfc/test/RSFC-07-1) | There is an identifier in README or CITATION | true |
-| [RSFC-07-2](https://w3id.org/rsfc/test/RSFC-07-2) | Software identifier resolves and links back to software | true |
+| [RSFC-07-2](https://w3id.org/rsfc/test/RSFC-07-2) | Software identifier resolves and links back to software | false |
 | [RSFC-08-1](https://w3id.org/rsfc/test/RSFC-08-1) | Metadata record is found in SWHeritage or Zenodo | true |
 | [RSFC-09-1](https://w3id.org/rsfc/test/RSFC-09-1) | Repository is from Github or Gitlab | true |
 | [RSFC-12-1](https://w3id.org/rsfc/test/RSFC-12-1) | There is an article citation or reference publication | false |
@@ -57,7 +57,7 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 | [RSFC-17-3](https://w3id.org/rsfc/test/RSFC-17-3) | Commits are linked to issues | false |
 | [RSFC-18-1](https://w3id.org/rsfc/test/RSFC-18-1) | There are citations | true |
 | [RSFC-19-1](https://w3id.org/rsfc/test/RSFC-19-1) | Repository has continuous integration workflows | true |
-| [RSFC-20-1](https://w3id.org/rsfc/test/RSFC-20-1) | Repository has an issue tracker | true |
+| [RSFC-20-1](https://w3id.org/rsfc/test/RSFC-20-1) | Repository has an issue tracker | false |
 | [RSFC-21-1](https://w3id.org/rsfc/test/RSFC-21-1) | Repository has contribution guidelines | false |
 | [RSFC-22-1](https://w3id.org/rsfc/test/RSFC-22-1) | Software offers a container file to run it | true |
 
@@ -72,6 +72,7 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Result:** true
 - **Process:** Searches for Zenodo and Software Heritage badges in the README file of the repository
 - **Evidence:** A Zenodo DOI identifier was found in:
+	- https://doi.org/10.5281/zenodo.1653148
 	- https://doi.org/10.5281/zenodo.16531481
 - **Suggestions:** N/A
 
@@ -84,9 +85,9 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Result:** true
 - **Process:** Checks if a version number for the software is indicated in the CITATION.cff, codemeta.json or package files(i.e. pyproject.toml, pom.xml, etc.)
 - **Evidence:** Found the software version in:
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/CITATION.cff
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/codemeta.json
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
+	- https://raw.githubusercontent.com////CITATION.cff
+	- https://raw.githubusercontent.com////codemeta.json
+	- https://raw.githubusercontent.com////pyproject.toml
 - **Suggestions:** N/A
 
 <a id="descriptive_metadata-https---w3id-org-rsfc-test-rsfc-04-1"></a>
@@ -104,7 +105,7 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Test ID:** https://w3id.org/rsfc/test/RSFC-04-3
 - **Result:** true
 - **Process:** Checks if there is a title and a description for the software in the metadata
-- **Evidence:** Found title in https://raw.githubusercontent.com/oeg-upm/rsfc/main/README.md and description (no source found, obtained via GitHub_API).
+- **Evidence:** A title was found in [https://raw.githubusercontent.com////README.md] and a description was found in [https://raw.githubusercontent.com////codemeta.json]
 - **Suggestions:** N/A
 
 <a id="descriptive_metadata-https---w3id-org-rsfc-test-rsfc-04-4"></a>
@@ -113,7 +114,7 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Test ID:** https://w3id.org/rsfc/test/RSFC-04-4
 - **Result:** true
 - **Process:** Searches for description, programming languages, date of creation and keywords in the repository
-- **Evidence:** Descriptive metadata found in: Description [https://raw.githubusercontent.com/oeg-upm/rsfc/main/codemeta.json, https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml], Languages [https://raw.githubusercontent.com/oeg-upm/rsfc/main/codemeta.json], Date Created [https://raw.githubusercontent.com/oeg-upm/rsfc/main/codemeta.json], Keywords [https://raw.githubusercontent.com/oeg-upm/rsfc/main/codemeta.json]
+- **Evidence:** Descriptive metadata found in: Description [https://raw.githubusercontent.com////codemeta.json, https://raw.githubusercontent.com////pyproject.toml], Languages [https://raw.githubusercontent.com////codemeta.json], Date Created [https://raw.githubusercontent.com////codemeta.json], Keywords [https://raw.githubusercontent.com////codemeta.json]
 - **Suggestions:** N/A
 
 <a id="descriptive_metadata-https---w3id-org-rsfc-test-rsfc-04-5"></a>
@@ -132,9 +133,9 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Result:** true
 - **Process:** Searches for authors in various files of the repository (i.e. CITATION.cff, AUTHORS.md, codemeta.json)
 - **Evidence:** Authors were found in:
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/CITATION.cff
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/codemeta.json
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
+	- https://raw.githubusercontent.com////CITATION.cff
+	- https://raw.githubusercontent.com////codemeta.json
+	- https://raw.githubusercontent.com////pyproject.toml
 - **Suggestions:** N/A
 
 <a id="descriptive_metadata-https---w3id-org-rsfc-test-rsfc-06-2"></a>
@@ -153,8 +154,8 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Result:** false
 - **Process:** Checks if all authors stated in the CITATION.cff file have an ORCID assigned
 - **Evidence:** Authors that do not have an orcid were found in:
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/CITATION.cff
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/codemeta.json
+	- https://raw.githubusercontent.com////CITATION.cff
+	- https://raw.githubusercontent.com////codemeta.json
 - **Suggestions:** When documenting your software's authors, you should include their ORCIDs if possible.
 
 ### has_contribution_guidelines
@@ -174,54 +175,37 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 #### Software has releases
 
 - **Test ID:** https://w3id.org/rsfc/test/RSFC-03-1
-- **Result:** true
+- **Result:** false
 - **Process:** Searches for release tags in the repository
-- **Evidence:** These releases were found:
-	- https://github.com/oeg-upm/rsfc/releases/tag/v0.1.7
-	- https://github.com/oeg-upm/rsfc/releases/tag/v0.1.6
-	- https://github.com/oeg-upm/rsfc/releases/tag/v0.1.5
-	- https://github.com/oeg-upm/rsfc/releases/tag/v0.1.4
-	- https://github.com/oeg-upm/rsfc/releases/tag/v0.1.3
-	- https://github.com/oeg-upm/rsfc/releases/tag/v0.1.2
-	- https://github.com/oeg-upm/rsfc/releases/tag/v0.1.1
-	- https://github.com/oeg-upm/rsfc/releases/tag/v0.1.0
-	- https://github.com/oeg-upm/rsfc/releases/tag/v0.0.9
-	- https://github.com/oeg-upm/rsfc/releases/tag/v0.0.8
-	- https://github.com/oeg-upm/rsfc/releases/tag/v0.0.7
-	- https://github.com/oeg-upm/rsfc/releases/tag/v0.0.6
-	- https://github.com/oeg-upm/rsfc/releases/tag/v0.0.5
-	- https://github.com/oeg-upm/rsfc/releases/tag/v0.0.4
-	- https://github.com/oeg-upm/rsfc/releases/tag/v0.0.3
-	- https://github.com/oeg-upm/rsfc/releases/tag/v0.0.2
-	- https://github.com/oeg-upm/rsfc/releases/tag/v0.0.1
-- **Suggestions:** N/A
+- **Evidence:** Could not find any releases in the repository
+- **Suggestions:** You should often launch releases of your software that contain new updates. More information at https://everse.software/RSQKit/releasing_software
 
 <a id="has_releases-https---w3id-org-rsfc-test-rsfc-03-2"></a>
 #### Releases have an id and version number
 
 - **Test ID:** https://w3id.org/rsfc/test/RSFC-03-2
-- **Result:** true
+- **Result:** false
 - **Process:** Checks if all of the releases have an identifier and a version
-- **Evidence:** All of the releases have an id and a version
-- **Suggestions:** N/A
+- **Evidence:** Could not find any releases in the repository
+- **Suggestions:** You should often launch releases of your software that contain new updates. More information at https://everse.software/RSQKit/releasing_software
 
 <a id="has_releases-https---w3id-org-rsfc-test-rsfc-03-4"></a>
 #### Release identifiers follow the same scheme
 
 - **Test ID:** https://w3id.org/rsfc/test/RSFC-03-4
-- **Result:** true
+- **Result:** false
 - **Process:** Checks if all of the version identifiers follow the same scheme
-- **Evidence:** All of the releases URLs follow the same scheme
-- **Suggestions:** N/A
+- **Evidence:** Could not find any releases in the repository
+- **Suggestions:** You should often launch releases of your software that contain new updates. More information at https://everse.software/RSQKit/releasing_software
 
 <a id="has_releases-https---w3id-org-rsfc-test-rsfc-03-5"></a>
 #### Last release consistency
 
 - **Test ID:** https://w3id.org/rsfc/test/RSFC-03-5
-- **Result:** true
+- **Result:** error
 - **Process:** Checks if the latest release tag matches the version stated in the codemeta or package files of the repository
-- **Evidence:** Latest release matches the latest version stated in the metadata files
-- **Suggestions:** N/A
+- **Evidence:** Could not get the necessary information to perform the test, it being releases and/or version in package file
+- **Suggestions:** None
 
 ### persistent_and_unique_identifier
 
@@ -267,10 +251,10 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 #### Software identifier resolves to software
 
 - **Test ID:** https://w3id.org/rsfc/test/RSFC-07-2
-- **Result:** true
+- **Result:** false
 - **Process:** Checks if the identifier found in the README file or metadata files (i.e. codemeta.json, CITATION.cff) resolves to a page that links back to the software repository
-- **Evidence:** The landing page of the software's identifier https://doi.org/10.5281/zenodo.16531481 links back to the software repository
-- **Suggestions:** N/A
+- **Evidence:** None of the identifiers found (if any) link back to the software repository
+- **Suggestions:** Your software's identifier should resolve to a page that links back to itself.
 
 ### repository_workflows
 
@@ -290,9 +274,9 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Result:** true
 - **Process:** Searches for workflows in the repository
 - **Evidence:** Workflows were found in:
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/.github/workflows/pypi-publish.yml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/.github/workflows/run-rsfc.yml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/.github/workflows/use-rsfc.yml
+	- https://raw.githubusercontent.com////.github/workflows/pypi-publish.yml
+	- https://raw.githubusercontent.com////.github/workflows/run-rsfc.yml
+	- https://raw.githubusercontent.com////.github/workflows/use-rsfc.yml
 - **Suggestions:** N/A
 
 ### requirements_specified
@@ -304,9 +288,9 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Result:** true
 - **Process:** Searches for dependencies in project configuration files, README and dependencies files such as requirements.txt
 - **Evidence:** Requirements were found in:
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/README.md
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml, https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////README.md
 - **Suggestions:** N/A
 
 <a id="requirements_specified-https---w3id-org-rsfc-test-rsfc-13-3"></a>
@@ -326,177 +310,177 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Result:** true
 - **Process:** Checks if dependencies are indicated in a machine-readable file
 - **Evidence:** There is a machine-readable file for dependencies at:
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/requirements.txt
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////pyproject.toml
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt
 - **Suggestions:** N/A
 
 ### software_has_citation
@@ -517,7 +501,7 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Result:** true
 - **Process:** Searches for a CITATION.cff file and README file in the repository
 - **Evidence:** A citation was found in:
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/CITATION.cff
+	- https://raw.githubusercontent.com////CITATION.cff
 - **Suggestions:** N/A
 
 ### software_has_documentation
@@ -538,7 +522,7 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Result:** true
 - **Process:** Searches for contact and support information in the repository
 - **Evidence:** Contact and support information was found in:
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/README.md
+	- https://raw.githubusercontent.com////README.md
 - **Suggestions:** N/A
 
 <a id="software_has_documentation-https---w3id-org-rsfc-test-rsfc-05-3"></a>
@@ -548,7 +532,7 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Result:** true
 - **Process:** Searches for a README file in the root repository and other forms of documentation such as a Read The Docs badge or url
 - **Evidence:** Documentation was found in:
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/README.md
+	- https://raw.githubusercontent.com////README.md
 - **Suggestions:** N/A
 
 <a id="software_has_documentation-https---w3id-org-rsfc-test-rsfc-13-2"></a>
@@ -558,7 +542,7 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Result:** true
 - **Process:** Searches for installation instructions in the README file of the repository
 - **Evidence:** Installation instructions were found in:
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/README.md
+	- https://raw.githubusercontent.com////README.md
 - **Suggestions:** N/A
 
 ### software_has_license
@@ -570,10 +554,10 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Result:** true
 - **Process:** Searches for a file named 'LICENSE' or 'LICENSE.md' in the root of the repository.
 - **Evidence:** A license was found in:
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/CITATION.cff
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/LICENSE
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/codemeta.json
+	- https://raw.githubusercontent.com////CITATION.cff
+	- https://raw.githubusercontent.com////LICENSE
+	- https://raw.githubusercontent.com////codemeta.json
+	- https://raw.githubusercontent.com////pyproject.toml
 - **Suggestions:** N/A
 
 <a id="software_has_license-https---w3id-org-rsfc-test-rsfc-15-2"></a>
@@ -616,7 +600,7 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Result:** true
 - **Process:** Searches in the root of the repository for container files such as dockerfile, apptainer, podman, etc.
 - **Evidence:** Found container files at:
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/Dockerfile
+	- https://raw.githubusercontent.com////Dockerfile
 - **Suggestions:** N/A
 
 ### support_issue_tracking
@@ -625,10 +609,10 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 #### Repository has an issue tracker
 
 - **Test ID:** https://w3id.org/rsfc/test/RSFC-20-1
-- **Result:** true
+- **Result:** false
 - **Process:** Checks if there is an issue tracker in the repository.
-- **Evidence:** There is an issue tracking system in the repository but it isn't stated in any of the files
-- **Suggestions:** N/A
+- **Evidence:** Could not find an issue tracking system in the repository
+- **Suggestions:** You should have an issue tracker in your repository to help you manage your ideas, next steps and bugs to fix.
 
 ### version_control_use
 
@@ -639,7 +623,7 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Result:** true
 - **Process:** Searches for a repo status badge in the README file of the repository
 - **Evidence:** A repo status badge was found in:
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/README.md
+	- https://raw.githubusercontent.com////README.md
 - **Suggestions:** N/A
 
 <a id="version_control_use-https---w3id-org-rsfc-test-rsfc-09-1"></a>
@@ -658,7 +642,7 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Result:** true
 - **Process:** Checks if the software repository has a commits history
 - **Evidence:** A commit history was found in:
-	- https://api.github.com/repos/oeg-upm/rsfc/commits?sha=main&since=2026-04-10T10:59:15.010993+00:00&per_page=100
+	- https://api.github.com/repos/oeg-upm/rsfc/commits?sha=main&since=2026-04-14T09:12:48.246812+00:00&per_page=100
 - **Suggestions:** N/A
 
 <a id="version_control_use-https---w3id-org-rsfc-test-rsfc-17-3"></a>
@@ -676,7 +660,7 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 #### Release versions follow a community established convention
 
 - **Test ID:** https://w3id.org/rsfc/test/RSFC-03-3
-- **Result:** true
+- **Result:** false
 - **Process:** Checks if all of the releases versions follow the SemVer or CalVer versioning standards
-- **Evidence:** All of the releases follow a versioning standard
-- **Suggestions:** N/A
+- **Evidence:** Could not find any releases in the repository
+- **Suggestions:** You should often launch releases of your software that contain new updates. More information at https://everse.software/RSQKit/releasing_software
