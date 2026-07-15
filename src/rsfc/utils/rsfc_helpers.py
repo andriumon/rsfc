@@ -106,11 +106,11 @@ def cross_check_any_issue(issues, commits_list):
     found_links = []
     
     for commit in commits_list:
-        commit_message = commit['commit']['message'] 
-        commit_sha = commit['sha'][:7]
+        commit_message = commit.get('message') or commit.get('commit', {}).get('message', '')
+        commit_sha = (commit.get("id") or commit.get("sha", ""))[:7]
         
         for issue in issues:
-            issue_number = issue['number']
+            issue_number = issue.get("iid") or issue.get("number")
             
             if f"#{issue_number}" in commit_message:
                 found_links.append(f"Commit '{commit_sha}' linked to Issue #{issue_number}")
@@ -171,19 +171,11 @@ def landing_page_links_back(lp_html, repo_url):
 def resolve_w3id(url):
     
     if "w3id.org" not in url:
-        if "github" in url or "gitlab" in url:
-            return url
-        else:
-            return None
-    
-    try:
-        response = requests.get(
-            url,
-            allow_redirects=True,
-            timeout=10
-        )
-        return response.url
+        return url   
 
+    try:
+        response = requests.get(url, allow_redirects=True, timeout=10)
+        return response.url
     except RequestException:
         print("Error resolving the w3id")
         return None
@@ -191,7 +183,7 @@ def resolve_w3id(url):
  
 def remove_git_from_url(url):
 
-    if url.endswith(".git"):
+    if url and url.endswith(".git"):
         return url[:-4]
 
     return url
