@@ -2,20 +2,15 @@ from rsfc.model import assessedSoftware as soft
 from rsfc.model import indicator as ind
 from rsfc.model import assessment as asmt
 from rsfc.model import markdownReportGenerator as mdRep
-from rsfc.harvesters import somef_harvester as som
 from rsfc.harvesters import github_harvester as gt
 from rsfc.utils import rsfc_helpers
 
 
 def start_assessment(repo, branch, tag, ftr, test_id, token):
     
-    gh = gt.GithubHarvester(repo, branch, tag, token)
-    sw = soft.AssessedSoftware(repo, gh)
-    somef = som.SomefHarvester(repo, branch, tag, token)
-    
     print("Assessing repository...")
 
-    indi = ind.Indicator(somef, gh)
+    indi = ind.Indicator(somef, gh) #Esto va a ser el Evaluator 
     checks = indi.assess_indicators(test_id)
     
     assess = asmt.Assessment(checks)

@@ -10,11 +10,11 @@ from somef.somef_cli import run_cli
 
 class SomefHarvester:
 
-    def __init__(self, repo_url, branch=None, tag=None, token=None):
+    def __init__(self, somef_kwargs, token):
 
         self.somef_configure(token)
 
-        self.somef_data = self.somef_assessment(repo_url=repo_url, branch=branch, tag=tag, threshold=0.8)
+        self.somef_data = self.somef_assessment(somef_kwargs)
 
     def somef_configure(self, token):
 
@@ -26,16 +26,7 @@ class SomefHarvester:
 
             stdin_data = (
                 f"{token}\n"
-                "\n"
-                "\n"
-                "\n"
-                "\n"
-                "\n"
-                "\n"
-                "\n"
-                "\n"
-                "\n"
-                "\n"
+                "\n"*10
             )
 
         else:
@@ -48,45 +39,24 @@ class SomefHarvester:
         except subprocess.CalledProcessError as e:
             raise RuntimeError("SOMEF configuration failed") from e
 
-    def somef_assessment(self, repo_url, branch=None, tag=None, threshold=0.8):
+    def somef_assessment(self, somef_kwargs):
 
         print("Extracting repository metadata with SOMEF...")
 
         os.makedirs("./rsfc_output/", exist_ok=True)
 
-        output_json = "./rsfc_output/somef_assessment.json"
-
-        somef_kwargs = {
-            "threshold": threshold,
-            "ignore_classifiers": True,
-            #"repo_url": repo_url,
-            "local_repo": "./",
-            "readme_only": False,
-            "output": output_json,
-            "pretty": True
-        }
-
-        if branch is not None:
-            somef_kwargs["branch"] = branch
-
-        elif tag is not None:
-            somef_kwargs["tag"] = tag
-            
-        '''elif local is not None:
-            somef_kwargs["local"] = local'''
-
         with (contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO())):
 
             run_cli(**somef_kwargs)
 
-        if not os.path.exists(output_json):
+        if not os.path.exists(somef_kwargs["output"]):
 
             raise RuntimeError(
                 "SOMEF did not generate the expected JSON output"
             )
 
-        with open(output_json, "r", encoding="utf-8") as f:
+        with open(somef_kwargs["output"], "r", encoding="utf-8") as f:
 
-            repo_data = json.load(f)
+            somef_data = json.load(f)
 
-        return repo_data
+        return somef_data
