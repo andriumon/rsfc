@@ -1,19 +1,19 @@
-# Quality Assessment for rsfc v0.1.7
+# Quality Assessment for RSFC 0.1.8
 
-An automated assessment of the rsfc tool based on the EVERSE software quality indicators, run on 2026-07-13.
+An automated assessment of the RSFC tool based on the EVERSE software quality indicators, run on 2026-07-22.
 
 ## General Information
 
-- **Software:** rsfc
-- **Repository:** https://github.com/oeg-upm/rsfc
-- **Assessment date:** 2026-07-13T09:12:55Z
-- **Total checks:** 41
+- **Software:** RSFC
+- **Repository:** ./
+- **Assessment date:** 2026-07-22T11:42:09Z
+- **Total checks:** 26
 
 ## Summary
 
-- **Passed (`true`)**: 27
-- **Failed (`false`)**: 13
-- **Errors (`error`)**: 1
+- **Passed (`true`)**: 20
+- **Failed (`false`)**: 6
+- **Errors (`error`)**: 0
 
 ## Results Table
 
@@ -22,17 +22,10 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 | [RSFC-01-1](https://w3id.org/rsfc/test/RSFC-01-1) | There is an identifier and it resolves | true |
 | [RSFC-01-2](https://w3id.org/rsfc/test/RSFC-01-2) | There is an identifier in the metadata files | true |
 | [RSFC-01-3](https://w3id.org/rsfc/test/RSFC-01-3) | There is an identifier and it follows a common schema | true |
-| [RSFC-03-1](https://w3id.org/rsfc/test/RSFC-03-1) | The software has releases | false |
-| [RSFC-03-2](https://w3id.org/rsfc/test/RSFC-03-2) | Releases have version and identifier | false |
-| [RSFC-03-3](https://w3id.org/rsfc/test/RSFC-03-3) | Release versions follow SemVer or CalVer | false |
-| [RSFC-03-4](https://w3id.org/rsfc/test/RSFC-03-4) | Release identifiers follow the same scheme | false |
-| [RSFC-03-5](https://w3id.org/rsfc/test/RSFC-03-5) | Last release version corresponds to version in package file | error |
 | [RSFC-03-6](https://w3id.org/rsfc/test/RSFC-03-6) | There is a version number stated in metadata files | true |
-| [RSFC-04-1](https://w3id.org/rsfc/test/RSFC-04-1) | Metadata files exist | true |
 | [RSFC-04-2](https://w3id.org/rsfc/test/RSFC-04-2) | There is a README file | true |
 | [RSFC-04-3](https://w3id.org/rsfc/test/RSFC-04-3) | Title and description are declared | true |
 | [RSFC-04-4](https://w3id.org/rsfc/test/RSFC-04-4) | There is descriptive metadata | true |
-| [RSFC-04-5](https://w3id.org/rsfc/test/RSFC-04-5) | There is a codemeta file | true |
 | [RSFC-05-1](https://w3id.org/rsfc/test/RSFC-05-1) | There is a repostatus badge in the README file | true |
 | [RSFC-05-2](https://w3id.org/rsfc/test/RSFC-05-2) | Contact and support metadata exists | true |
 | [RSFC-05-3](https://w3id.org/rsfc/test/RSFC-05-3) | Software documentation exists | true |
@@ -40,24 +33,16 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 | [RSFC-06-2](https://w3id.org/rsfc/test/RSFC-06-2) | Contributors are declared | false |
 | [RSFC-06-3](https://w3id.org/rsfc/test/RSFC-06-3) | Authors have an ORCID assigned | false |
 | [RSFC-07-1](https://w3id.org/rsfc/test/RSFC-07-1) | There is an identifier in README or CITATION | true |
-| [RSFC-07-2](https://w3id.org/rsfc/test/RSFC-07-2) | Software identifier resolves and links back to software | false |
 | [RSFC-08-1](https://w3id.org/rsfc/test/RSFC-08-1) | Metadata record is found in SWHeritage or Zenodo | true |
-| [RSFC-09-1](https://w3id.org/rsfc/test/RSFC-09-1) | Repository is from Github or Gitlab | true |
 | [RSFC-12-1](https://w3id.org/rsfc/test/RSFC-12-1) | There is an article citation or reference publication | false |
 | [RSFC-13-1](https://w3id.org/rsfc/test/RSFC-13-1) | Dependencies are declared | true |
 | [RSFC-13-2](https://w3id.org/rsfc/test/RSFC-13-2) | There are installation instructions | true |
 | [RSFC-13-3](https://w3id.org/rsfc/test/RSFC-13-3) | Dependencies have version numbers | false |
 | [RSFC-13-4](https://w3id.org/rsfc/test/RSFC-13-4) | Dependencies are in a machine-readable format | true |
-| [RSFC-14-1](https://w3id.org/rsfc/test/RSFC-14-1) | Tests are provided | true |
 | [RSFC-14-2](https://w3id.org/rsfc/test/RSFC-14-2) | There are actions to automate tests | false |
 | [RSFC-15-1](https://w3id.org/rsfc/test/RSFC-15-1) | There is a license | true |
 | [RSFC-15-2](https://w3id.org/rsfc/test/RSFC-15-2) | License is in SPDX format | true |
-| [RSFC-16-1](https://w3id.org/rsfc/test/RSFC-16-1) | License is referenced in metadata files | true |
-| [RSFC-17-2](https://w3id.org/rsfc/test/RSFC-17-2) | Repository has a commit history | true |
-| [RSFC-17-3](https://w3id.org/rsfc/test/RSFC-17-3) | Commits are linked to issues | false |
-| [RSFC-18-1](https://w3id.org/rsfc/test/RSFC-18-1) | There are citations | true |
 | [RSFC-19-1](https://w3id.org/rsfc/test/RSFC-19-1) | Repository has continuous integration workflows | true |
-| [RSFC-20-1](https://w3id.org/rsfc/test/RSFC-20-1) | Repository has an issue tracker | false |
 | [RSFC-21-1](https://w3id.org/rsfc/test/RSFC-21-1) | Repository has contribution guidelines | false |
 | [RSFC-22-1](https://w3id.org/rsfc/test/RSFC-22-1) | Software offers a container file to run it | true |
 
@@ -90,15 +75,6 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 	- https://raw.githubusercontent.com////pyproject.toml
 - **Suggestions:** N/A
 
-<a id="descriptive_metadata-https---w3id-org-rsfc-test-rsfc-04-1"></a>
-#### Metadata exists
-
-- **Test ID:** https://w3id.org/rsfc/test/RSFC-04-1
-- **Result:** true
-- **Process:** Searches for codemeta, citation and package files in the repository
-- **Evidence:** Found CITATION.cff, codemeta.json, package_file in the repository
-- **Suggestions:** N/A
-
 <a id="descriptive_metadata-https---w3id-org-rsfc-test-rsfc-04-3"></a>
 #### There are title and description
 
@@ -115,15 +91,6 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Result:** true
 - **Process:** Searches for description, programming languages, date of creation and keywords in the repository
 - **Evidence:** Descriptive metadata found in: Description [https://raw.githubusercontent.com////codemeta.json, https://raw.githubusercontent.com////pyproject.toml], Languages [https://raw.githubusercontent.com////codemeta.json], Date Created [https://raw.githubusercontent.com////codemeta.json], Keywords [https://raw.githubusercontent.com////codemeta.json]
-- **Suggestions:** N/A
-
-<a id="descriptive_metadata-https---w3id-org-rsfc-test-rsfc-04-5"></a>
-#### There is a codemeta file
-
-- **Test ID:** https://w3id.org/rsfc/test/RSFC-04-5
-- **Result:** true
-- **Process:** Searches for a codemeta.json file in the repository
-- **Evidence:** A codemeta.json file was found in the root of the repository
 - **Suggestions:** N/A
 
 <a id="descriptive_metadata-https---w3id-org-rsfc-test-rsfc-06-1"></a>
@@ -169,44 +136,6 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Evidence:** Could not find contribution guidelines in the repository
 - **Suggestions:** If you want to properly keep track of the colaborations your project receives to ensure its quality and fiability, you should add some contribution guidelines so the colaborators know how you want contributions to be made
 
-### has_releases
-
-<a id="has_releases-https---w3id-org-rsfc-test-rsfc-03-1"></a>
-#### Software has releases
-
-- **Test ID:** https://w3id.org/rsfc/test/RSFC-03-1
-- **Result:** false
-- **Process:** Searches for release tags in the repository
-- **Evidence:** Could not find any releases in the repository
-- **Suggestions:** You should often launch releases of your software that contain new updates. More information at https://everse.software/RSQKit/releasing_software
-
-<a id="has_releases-https---w3id-org-rsfc-test-rsfc-03-2"></a>
-#### Releases have an id and version number
-
-- **Test ID:** https://w3id.org/rsfc/test/RSFC-03-2
-- **Result:** false
-- **Process:** Checks if all of the releases have an identifier and a version
-- **Evidence:** Could not find any releases in the repository
-- **Suggestions:** You should often launch releases of your software that contain new updates. More information at https://everse.software/RSQKit/releasing_software
-
-<a id="has_releases-https---w3id-org-rsfc-test-rsfc-03-4"></a>
-#### Release identifiers follow the same scheme
-
-- **Test ID:** https://w3id.org/rsfc/test/RSFC-03-4
-- **Result:** false
-- **Process:** Checks if all of the version identifiers follow the same scheme
-- **Evidence:** Could not find any releases in the repository
-- **Suggestions:** You should often launch releases of your software that contain new updates. More information at https://everse.software/RSQKit/releasing_software
-
-<a id="has_releases-https---w3id-org-rsfc-test-rsfc-03-5"></a>
-#### Last release consistency
-
-- **Test ID:** https://w3id.org/rsfc/test/RSFC-03-5
-- **Result:** error
-- **Process:** Checks if the latest release tag matches the version stated in the codemeta or package files of the repository
-- **Evidence:** Could not get the necessary information to perform the test, it being releases and/or version in package file
-- **Suggestions:** None
-
 ### persistent_and_unique_identifier
 
 <a id="persistent_and_unique_identifier-https---w3id-org-rsfc-test-rsfc-01-1"></a>
@@ -247,15 +176,6 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 	- 10.5281/zenodo.16531481
 - **Suggestions:** N/A
 
-<a id="persistent_and_unique_identifier-https---w3id-org-rsfc-test-rsfc-07-2"></a>
-#### Software identifier resolves to software
-
-- **Test ID:** https://w3id.org/rsfc/test/RSFC-07-2
-- **Result:** false
-- **Process:** Checks if the identifier found in the README file or metadata files (i.e. codemeta.json, CITATION.cff) resolves to a page that links back to the software repository
-- **Evidence:** None of the identifiers found (if any) link back to the software repository
-- **Suggestions:** Your software's identifier should resolve to a page that links back to itself.
-
 ### repository_workflows
 
 <a id="repository_workflows-https---w3id-org-rsfc-test-rsfc-14-2"></a>
@@ -289,7 +209,7 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Process:** Searches for dependencies in project configuration files, README and dependencies files such as requirements.txt
 - **Evidence:** Requirements were found in:
 	- https://raw.githubusercontent.com////pyproject.toml
-	- https://raw.githubusercontent.com////pyproject.toml, https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////requirements.txt, https://raw.githubusercontent.com////pyproject.toml
 	- https://raw.githubusercontent.com////README.md
 - **Suggestions:** N/A
 
@@ -334,7 +254,6 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 	- https://raw.githubusercontent.com////pyproject.toml
 	- https://raw.githubusercontent.com////pyproject.toml
 	- https://raw.githubusercontent.com////pyproject.toml
-	- https://raw.githubusercontent.com////pyproject.toml
 	- https://raw.githubusercontent.com////requirements.txt
 	- https://raw.githubusercontent.com////pyproject.toml
 	- https://raw.githubusercontent.com////pyproject.toml
@@ -347,6 +266,7 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 	- https://raw.githubusercontent.com////pyproject.toml
 	- https://raw.githubusercontent.com////pyproject.toml
 	- https://raw.githubusercontent.com////requirements.txt
+	- https://raw.githubusercontent.com////pyproject.toml
 	- https://raw.githubusercontent.com////pyproject.toml
 	- https://raw.githubusercontent.com////pyproject.toml
 	- https://raw.githubusercontent.com////pyproject.toml
@@ -494,16 +414,6 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Evidence:** Could not find neither a reference publication or citation to an article in the repository
 - **Suggestions:** You should include other forms of citation like article citations and reference publications in your software's metadata. More information at https://everse.software/RSQKit/creating_good_readme
 
-<a id="software_has_citation-https---w3id-org-rsfc-test-rsfc-18-1"></a>
-#### Repository has citation
-
-- **Test ID:** https://w3id.org/rsfc/test/RSFC-18-1
-- **Result:** true
-- **Process:** Searches for a CITATION.cff file and README file in the repository
-- **Evidence:** A citation was found in:
-	- https://raw.githubusercontent.com////CITATION.cff
-- **Suggestions:** N/A
-
 ### software_has_documentation
 
 <a id="software_has_documentation-https---w3id-org-rsfc-test-rsfc-04-2"></a>
@@ -555,9 +465,9 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Process:** Searches for a file named 'LICENSE' or 'LICENSE.md' in the root of the repository.
 - **Evidence:** A license was found in:
 	- https://raw.githubusercontent.com////CITATION.cff
+	- https://raw.githubusercontent.com////pyproject.toml
 	- https://raw.githubusercontent.com////LICENSE
 	- https://raw.githubusercontent.com////codemeta.json
-	- https://raw.githubusercontent.com////pyproject.toml
 - **Suggestions:** N/A
 
 <a id="software_has_license-https---w3id-org-rsfc-test-rsfc-15-2"></a>
@@ -567,28 +477,6 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Result:** true
 - **Process:** Checks if the licenses detected are SPDX compliant
 - **Evidence:** All licenses are SPDX compliant
-- **Suggestions:** N/A
-
-<a id="software_has_license-https---w3id-org-rsfc-test-rsfc-16-1"></a>
-#### License referenced in metadata files
-
-- **Test ID:** https://w3id.org/rsfc/test/RSFC-16-1
-- **Result:** true
-- **Process:** Searches for licensing information in the codemeta, CITATION.cff and package files if they exist
-- **Evidence:** License information was found in codemeta (MIT), CITATION.cff (MIT), package (MIT)
-- **Suggestions:** N/A
-
-### software_has_tests
-
-<a id="software_has_tests-https---w3id-org-rsfc-test-rsfc-14-1"></a>
-#### Presence of tests in repository
-
-- **Test ID:** https://w3id.org/rsfc/test/RSFC-14-1
-- **Result:** true
-- **Process:** Searches for files and/or directories that mention test in their names. Also, ignores doc and docs directories
-- **Evidence:** Files and/or directories that mention test were found at:
-	- tests
-	- tests/test_main.py
 - **Suggestions:** N/A
 
 ### software_is_containerized
@@ -603,17 +491,6 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 	- https://raw.githubusercontent.com////Dockerfile
 - **Suggestions:** N/A
 
-### support_issue_tracking
-
-<a id="support_issue_tracking-https---w3id-org-rsfc-test-rsfc-20-1"></a>
-#### Repository has an issue tracker
-
-- **Test ID:** https://w3id.org/rsfc/test/RSFC-20-1
-- **Result:** false
-- **Process:** Checks if there is an issue tracker in the repository.
-- **Evidence:** Could not find an issue tracking system in the repository
-- **Suggestions:** You should have an issue tracker in your repository to help you manage your ideas, next steps and bugs to fix.
-
 ### version_control_use
 
 <a id="version_control_use-https---w3id-org-rsfc-test-rsfc-05-1"></a>
@@ -625,42 +502,3 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Evidence:** A repo status badge was found in:
 	- https://raw.githubusercontent.com////README.md
 - **Suggestions:** N/A
-
-<a id="version_control_use-https---w3id-org-rsfc-test-rsfc-09-1"></a>
-#### Repository is from Github/Gitlab
-
-- **Test ID:** https://w3id.org/rsfc/test/RSFC-09-1
-- **Result:** true
-- **Process:** Checks if the URL provided is indeed a Github or Gitlab repository
-- **Evidence:** URL provided is a Github or Gitlab repository
-- **Suggestions:** N/A
-
-<a id="version_control_use-https---w3id-org-rsfc-test-rsfc-17-2"></a>
-#### Commit history
-
-- **Test ID:** https://w3id.org/rsfc/test/RSFC-17-2
-- **Result:** true
-- **Process:** Checks if the software repository has a commits history
-- **Evidence:** A commit history was found in:
-	- https://api.github.com/repos/oeg-upm/rsfc/commits?sha=main&since=2026-04-14T09:12:48.246812+00:00&per_page=100
-- **Suggestions:** N/A
-
-<a id="version_control_use-https---w3id-org-rsfc-test-rsfc-17-3"></a>
-#### Commits are linked to issues
-
-- **Test ID:** https://w3id.org/rsfc/test/RSFC-17-3
-- **Result:** false
-- **Process:** Checks if there is at least one of the existing issues (opened or closed) referenced in any of the commits made in the default branch of the repository
-- **Evidence:** There is not any commits linked to any issues in the repository
-- **Suggestions:** It is good practice to indicate in your commits which issues you are targeting or solving
-
-### versioning_standards_use
-
-<a id="versioning_standards_use-https---w3id-org-rsfc-test-rsfc-03-3"></a>
-#### Release versions follow a community established convention
-
-- **Test ID:** https://w3id.org/rsfc/test/RSFC-03-3
-- **Result:** false
-- **Process:** Checks if all of the releases versions follow the SemVer or CalVer versioning standards
-- **Evidence:** Could not find any releases in the repository
-- **Suggestions:** You should often launch releases of your software that contain new updates. More information at https://everse.software/RSQKit/releasing_software

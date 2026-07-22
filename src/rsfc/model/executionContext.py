@@ -7,29 +7,34 @@ class ExecutionContext:
     
     def __init__(self, repo, branch, tag, token, mode):
         self.repo = repo
-        self.evaluated_tests = constants.REMOTE_EXEC_TESTS #Debe ser una u otra
-        self.somef_data = self.run_somef(branch, tag, token, threshold = 0.8)
-        self.gh_data = gt.GithubHarvester(self.repo, branch, tag, token)
-        self.sw_name, self.sw_version = self.get_basic_metadata(self.somef_data)
-    
-    
-    def run_somef(self, branch, tag, token, threshold): #Ver como alternar entre repo_url y local_repo (poner una otra en base al valor de mode)
-        somef_kwargs = {
-            "threshold": threshold,
+        self.somef_kwargs = {
+            "threshold": 0.8,
             "ignore_classifiers": True,
-            "repo_url": self.repo,
             "readme_only": False,
             "output": "./rsfc_output/somef_assessment.json",
             "pretty": True
         }
+        if mode == "local":
+            self.evaluated_tests = constants.LOCAL_EXEC_TESTS
+            self.somef_kwargs["local_repo"] = self.repo
+            self.gh_data = None
+        elif mode == "remote":
+            self.evaluated_tests = constants.REMOTE_EXEC_TESTS
+            self.somef_kwargs["repo_url"] = self.repo
+            self.gh_data = gt.GithubHarvester(self.repo, branch, tag, token)
+        self.somef_data = self.run_somef(branch, tag, token)
+        self.sw_name, self.sw_version = self.get_basic_metadata(self.somef_data)
+        self.sw_id = None
+    
+    
+    def run_somef(self, branch, tag, token):
 
         if branch is not None:
-            somef_kwargs["branch"] = branch
-
+            self.somef_kwargs["branch"] = branch
         elif tag is not None:
-            somef_kwargs["tag"] = tag
+            self.somef_kwargs["tag"] = tag
             
-        somef_data = som.SomefHarvester(somef_kwargs, token)
+        somef_data = som.SomefHarvester(self.somef_kwargs, token).somef_data
         
         return somef_data
     
@@ -39,7 +44,7 @@ class ExecutionContext:
         version = somef_data.get("version", [])
         
         if name:
-            name = name[0].get("name", None)
+            name = name[0].get("result", None)
         if version:
             version = version[0].get("result", None)
         
@@ -51,12 +56,14 @@ class ExecutionContext:
         return name, version
     
     
-    def get_execution_data(self):
+    def get_context(self):
         return {
+            "evaluated_tests": self.evaluated_tests,
             "somef_data": self.somef_data,
             "gh_data": self.gh_data,
             "repo_url": self.repo,
             "sw_name": self.sw_name,
-            "sw_version": self.sw_version
+            "sw_version": self.sw_version,
+            "sw_id": self.sw_id
         }
         

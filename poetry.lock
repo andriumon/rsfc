@@ -2387,14 +2387,14 @@ tests = ["pandas", "polars", "pyarrow", "pytest", "pytest-cov", "pytest-xdist", 
 
 [[package]]
 name = "somef"
-version = "0.11.1"
+version = "0.11.2"
 description = "SOftware Metadata Extraction Framework: A tool for automatically extracting relevant software metadata from a source code repository (README, package files, etc)."
 optional = false
 python-versions = "<3.13,>=3.11"
 groups = ["main"]
 files = [
-    {file = "somef-0.11.1-py3-none-any.whl", hash = "sha256:b60e9cfaca20d39ee6e599d7fa39989e6058e56f5292c666620b96effaed6f00"},
-    {file = "somef-0.11.1.tar.gz", hash = "sha256:6a4217e5fc6054e3642c36a802236868ee69bd9b56088f5ac08b5b3aca0556ef"},
+    {file = "somef-0.11.2-py3-none-any.whl", hash = "sha256:4e4bf7db17dccbf26f79f1113408548f120e79c44b20d6f7eb1f42761137bc43"},
+    {file = "somef-0.11.2.tar.gz", hash = "sha256:5b781773e7d0dcfccfef8b7e805475066aa4fc570988368da67cd70caf688d28"},
 ]
 
 [package.dependencies]
@@ -2701,4 +2701,4 @@ scikit-learn = ["scikit-learn"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<3.13"
-content-hash = "95ea1a4f538ed96f4d80995de4e594abcc4e9a7aafa3baefe2a1f721335a510e"
+content-hash = "c43779165511c8b1a52f45727ed0b0cdde8ea946c6597fcb24dad7051889b5ef"

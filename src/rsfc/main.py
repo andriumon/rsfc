@@ -5,18 +5,18 @@ import click
 
 @click.command(help="RSFC - EVERSE Research Software Fairness Checks")
 @click.option('--repo', help="URL of the Github/Gitlab repository to be analyzed")
-@click.option('--local-path', type=click.Path(exists=True, file_okay=False), help="Local path of the repository to be analyzed")
+@click.option('--local', type=click.Path(exists=True, file_okay=False), help="Local path of the repository to be analyzed")
 @click.option('-b', help="Name of the repo branch to analyze. By default main/master")
 @click.option('-v', help="Tag of the release to analyze. By default latest release.")
 @click.option('--ftr', is_flag=True, help="Flag to indicate if JSON-LD in FTR format is desired")
 @click.option('--id', help="Identifier of a specific test. Only that test will be ran")
 @click.option('-t', help="Authorization Github token")
-def main(repo, local_path, b, v, ftr, id, t):
+def main(repo, local, b, v, ftr, id, t):
     
-    if repo and local_path:
+    if repo and local:
         raise click.UsageError("Error: You can't use '--repo' and '--local-path' at the same time")
-    if not repo and not local_path:
-        raise click.UsageError("Error: Either '--repo' or '--local_path' must be passed")
+    if not repo and not local:
+        raise click.UsageError("Error: Either '--repo' or '--local' must be passed")
 
     if b and v:
         raise click.UsageError("Error: You can't use '-b' and '-v' at the same time.")
@@ -29,13 +29,15 @@ def main(repo, local_path, b, v, ftr, id, t):
     
     if repo:
         click.echo("Checking if url is w3id")
-        target_path = resolve_w3id(repo)
-        target_path = remove_git_from_url(target_path)
+        target = resolve_w3id(repo)
+        target = remove_git_from_url(target)
+        mode = "remote"
     else:
-        target_path = local_path
+        target = local
+        mode = "local"
     
     try:
-        rsfc_asmt, table = start_assessment(target_path, b, v, ftr, id, t)
+        rsfc_asmt, table = start_assessment(target, b, v, ftr, id, t, mode)
         
     except GithubRateLimitExceeded as e:
         click.echo(click.style(f"\nERROR: {e}", fg="red"), err=True)
