@@ -1,18 +1,18 @@
-# Quality Assessment for rsfc v0.1.6
+# Quality Assessment for rsfc 0.1.7
 
-An automated assessment of the rsfc tool based on the EVERSE software quality indicators, run on 2026-07-02.
+An automated assessment of the rsfc tool based on the EVERSE software quality indicators, run on 2026-07-23.
 
 ## General Information
 
 - **Software:** rsfc
 - **Repository:** https://github.com/oeg-upm/rsfc
-- **Assessment date:** 2026-07-02T09:15:49Z
+- **Assessment date:** 2026-07-23T09:37:26Z
 - **Total checks:** 41
 
 ## Summary
 
-- **Passed (`true`)**: 34
-- **Failed (`false`)**: 7
+- **Passed (`true`)**: 35
+- **Failed (`false`)**: 6
 - **Errors (`error`)**: 0
 
 ## Results Table
@@ -54,7 +54,7 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 | [RSFC-15-2](https://w3id.org/rsfc/test/RSFC-15-2) | License is in SPDX format | true |
 | [RSFC-16-1](https://w3id.org/rsfc/test/RSFC-16-1) | License is referenced in metadata files | true |
 | [RSFC-17-2](https://w3id.org/rsfc/test/RSFC-17-2) | Repository has a commit history | true |
-| [RSFC-17-3](https://w3id.org/rsfc/test/RSFC-17-3) | Commits are linked to issues | false |
+| [RSFC-17-3](https://w3id.org/rsfc/test/RSFC-17-3) | Commits are linked to issues | true |
 | [RSFC-18-1](https://w3id.org/rsfc/test/RSFC-18-1) | There are citations | true |
 | [RSFC-19-1](https://w3id.org/rsfc/test/RSFC-19-1) | Repository has continuous integration workflows | true |
 | [RSFC-20-1](https://w3id.org/rsfc/test/RSFC-20-1) | Repository has an issue tracker | true |
@@ -177,6 +177,7 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Result:** true
 - **Process:** Searches for release tags in the repository
 - **Evidence:** These releases were found:
+	- https://github.com/oeg-upm/rsfc/releases/tag/v0.1.7
 	- https://github.com/oeg-upm/rsfc/releases/tag/v0.1.6
 	- https://github.com/oeg-upm/rsfc/releases/tag/v0.1.5
 	- https://github.com/oeg-upm/rsfc/releases/tag/v0.1.4
@@ -569,10 +570,10 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Result:** true
 - **Process:** Searches for a file named 'LICENSE' or 'LICENSE.md' in the root of the repository.
 - **Evidence:** A license was found in:
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
+	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/CITATION.cff
 	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/codemeta.json
 	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/LICENSE
-	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/CITATION.cff
+	- https://raw.githubusercontent.com/oeg-upm/rsfc/main/pyproject.toml
 - **Suggestions:** N/A
 
 <a id="software_has_license-https---w3id-org-rsfc-test-rsfc-15-2"></a>
@@ -657,17 +658,18 @@ An automated assessment of the rsfc tool based on the EVERSE software quality in
 - **Result:** true
 - **Process:** Checks if the software repository has a commits history
 - **Evidence:** A commit history was found in:
-	- https://api.github.com/repos/oeg-upm/rsfc/commits?sha=main&since=2026-04-03T09:15:34.373633+00:00&per_page=100
+	- https://api.github.com/repos/oeg-upm/rsfc/commits?sha=main&since=2026-04-24T09:37:14.713245+00:00&per_page=100
 - **Suggestions:** N/A
 
 <a id="version_control_use-https---w3id-org-rsfc-test-rsfc-17-3"></a>
 #### Commits are linked to issues
 
 - **Test ID:** https://w3id.org/rsfc/test/RSFC-17-3
-- **Result:** false
+- **Result:** true
 - **Process:** Checks if there is at least one of the existing issues (opened or closed) referenced in any of the commits made in the default branch of the repository
-- **Evidence:** There is not any commits linked to any issues in the repository
-- **Suggestions:** It is good practice to indicate in your commits which issues you are targeting or solving
+- **Evidence:** There is at least one commit linked to an issue
+	- Commit '93ebfb1' linked to Issue #52
+- **Suggestions:** N/A
 
 ### versioning_standards_use
 
