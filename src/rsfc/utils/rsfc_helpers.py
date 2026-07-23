@@ -119,6 +119,12 @@ def cross_check_any_issue(issues, commits_list):
 
 
 def normalize_identifier_url(identifier):
+    
+    if isinstance(identifier, list):
+        identifier = next((item for item in identifier if item), "")
+
+    if isinstance(identifier, dict):
+        identifier = identifier.get("value", "")
 
     identifier = identifier.strip()
     lower = identifier.lower()
