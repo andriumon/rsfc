@@ -662,7 +662,6 @@ REMOTE_EXEC_TESTS = [
 ]
 
 LOCAL_EXEC_TESTS = [
-    "RSFC-01-1",
     "RSFC-01-2",
     "RSFC-01-3",
     "RSFC-03-6",

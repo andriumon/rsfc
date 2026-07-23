@@ -1,11 +1,12 @@
 from rsfc.utils import constants
 from rsfc.harvesters import somef_harvester as som
 from rsfc.harvesters import github_harvester as gt
+import json
 
 
 class ExecutionContext:
     
-    def __init__(self, repo, branch, tag, token, mode):
+    def __init__(self, repo, branch, tag, metadata, token, mode):
         self.repo = repo
         self.somef_kwargs = {
             "threshold": 0.8,
@@ -22,7 +23,10 @@ class ExecutionContext:
             self.evaluated_tests = constants.REMOTE_EXEC_TESTS
             self.somef_kwargs["repo_url"] = self.repo
             self.gh_data = gt.GithubHarvester(self.repo, branch, tag, token)
-        self.somef_data = self.run_somef(branch, tag, token)
+        if metadata == None:
+            self.somef_data = self.run_somef(branch, tag, token)
+        else:
+            self.somef_data = self.load_metadata(metadata)
         self.sw_name, self.sw_version = self.get_basic_metadata(self.somef_data)
         self.sw_id = None
     
@@ -37,6 +41,15 @@ class ExecutionContext:
         somef_data = som.SomefHarvester(self.somef_kwargs, token).somef_data
         
         return somef_data
+    
+    
+    def load_metadata(self, md_path):
+        try:
+            with open(md_path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            print(f"Error loading metadata file at '{md_path}': {e}")
+            return {}
     
     
     def get_basic_metadata(self, somef_data):

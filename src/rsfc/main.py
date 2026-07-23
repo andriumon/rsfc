@@ -10,16 +10,21 @@ import click
 @click.option('-v', help="Tag of the release to analyze. By default latest release.")
 @click.option('--ftr', is_flag=True, help="Flag to indicate if JSON-LD in FTR format is desired")
 @click.option('--id', help="Identifier of a specific test. Only that test will be ran")
+@click.option('--metadata', type=click.Path(exists=True, dir_okay=False), help="SOMEF metadata file in case you already have one")
 @click.option('-t', help="Authorization Github token")
-def main(repo, local, b, v, ftr, id, t):
-    
-    if repo and local:
-        raise click.UsageError("Error: You can't use '--repo' and '--local-path' at the same time")
+def main(repo, local, b, v, ftr, id, metadata, t):
+
+    if local:
+        if repo:
+            raise click.UsageError("You can't use '--repo' and '--local' at the same time.")
+        if b or v or t:
+            raise click.UsageError("Remote options ('-b', '-v', '-t') cannot be used with '--local'.")
+            
     if not repo and not local:
-        raise click.UsageError("Error: Either '--repo' or '--local' must be passed")
+        raise click.UsageError("Either '--repo' or '--local' must be passed.")
 
     if b and v:
-        raise click.UsageError("Error: You can't use '-b' and '-v' at the same time.")
+        raise click.UsageError("You can't use '-b' and '-v' at the same time.")
 
     click.echo("Making preparations...")
     
@@ -37,7 +42,7 @@ def main(repo, local, b, v, ftr, id, t):
         mode = "local"
     
     try:
-        rsfc_asmt, table = start_assessment(target, b, v, ftr, id, t, mode)
+        rsfc_asmt, table = start_assessment(target, b, v, ftr, id, metadata, t, mode)
         
     except GithubRateLimitExceeded as e:
         click.echo(click.style(f"\nERROR: {e}", fg="red"), err=True)
