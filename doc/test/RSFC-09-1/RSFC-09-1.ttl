@@ -9,6 +9,8 @@
 @prefix dqv: <http://www.w3.org/ns/dqv#> .
 @prefix vivo: <http://vivoweb.org/ontology/core#> .
 @prefix dpv: <https://w3id.org/dpv#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
 
 <https://w3id.org/rsfc/test/RSFC-09-1> a ftr:Test, dcat:DataService ;
     dcat:contactPoint <https://orcid.org/0000-0003-0454-7145> ;
@@ -26,7 +28,7 @@
     dqv:inDimension  <https://doi.org/10.25504/FAIRsharing.b93697>, <https://doi.org/10.25504/FAIRsharing.6fff5e>,<https://doi.org/10.25504/FAIRsharing.0c61dd>, <https://doi.org/10.25504/FAIRsharing.60a40f>;
     dcat:keyword "URL"@en , "Github"@en , 
                  "Test"@en ;
-    dcat:endpointDescription <http://w3id.org/rsfc/api> ;
+    dcat:endpointDescription <https://w3id.org/rsfc/api> ;
     dcat:endpointURL <https://api.rsfc.linkeddata.es/assess/test/RSFC-09-1> ;
     dpv:isApplicableFor <https://schema.org/SoftwareSourceCode> ;
     ftr:supportedBy <https://w3id.org/rsfc/> ;
@@ -68,4 +70,5 @@
 <https://w3id.org/rsfc/repository>
     foaf:homePage <https://github.com/oeg-upm/rsfc> ;
     dcterms:description "Main repository for Research Software Quality Checks (RSFC) code and documentation"@en .
-<https://w3id.org/everse/i/indicators/version_control_use> a dqv:Metric .
+<https://w3id.org/everse/i/indicators/version_control_use> a dqv:Metric ;
+    owl:sameAs <https://doi.org/10.25504/FAIRsharing.d2b2c5> .
