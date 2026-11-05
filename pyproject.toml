@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "rsfc"
-version = "0.2.0"
+version = "0.2.1"
 description = "EVERSE Research Software Fairness Checks"
 authors = [
     "Andres Montero <andres.montero.martin@upm.es>",
@@ -15,13 +15,13 @@ homepage = "https://github.com/oeg-upm/rsfc"
 
 [tool.poetry.dependencies]
 python = ">=3.11,<3.13"
-somef = "0.11.2"
+somef = "0.11.5"
 regex = "2024.11.6"
 requests = "2.34.2"
 anyascii = "0.3.2"
 attrs = "25.3.0"
 beautifulsoup4 = "4.13.4"
-bibtexparser = "1.4.3"
+bibtexparser = "<3.0.0,>=2.1.0"
 bs4 = "0.0.1"
 build = "1.2.2.post1"
 certifi = "2025.6.15"
@@ -92,7 +92,7 @@ typeguard = "4.4.4"
 typing-extensions = "4.15.0"
 tzdata = "2025.2"
 urllib3 = "2.5.0"
-validators = "0.22.0"
+validators = "<0.37.0,>=0.35"
 xgboost = "2.1.4"
 pystache = "0.6.8"
 
